@@ -38,7 +38,7 @@ public class Order {
 	}
 	
 	public String toString() {
-		return String.format("%-10s %-30s %-10s %-10s\n", getStudentId(), getOrderDate(),
+		return String.format("%-10s %-30s %-10s\n", getStudentId(), getOrderDate(),
 				getItems());
 	}
 
