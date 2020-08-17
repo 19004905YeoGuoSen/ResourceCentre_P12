@@ -34,7 +34,6 @@ public class C206_CaseStudy {
 
 
 	private static void setHeader(String header) {
-		// TODO Auto-generated method stub
 		Helper.line(80, "-");
 		System.out.println(header);
 		Helper.line(80, "-");
