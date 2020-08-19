@@ -21,7 +21,9 @@ public class C206_CaseStudy {
 				if (orders == 1) {
 					viewAllOrder(orderList);
 				} else if (orders == 2) {
-					addAllOrder(orderList);
+					Order order1 = inputOrder();
+					addAllOrder(orderList, order1);
+//					addAllOrder(orderList);
 				} else if (orders == 3) {
 					deleteAllOrder(orderList);
 				}
@@ -43,26 +45,41 @@ public class C206_CaseStudy {
 
 	}
 
-//===================================================Order=========================================================
+	//=============================================ViewAllOrder====================================
 	private static void viewAllOrder(ArrayList<Order> orderList) {
 		// TODO Auto-generated method stub
+		String output = String.format("%-15s %-20s %-30s \n", "STUDENT ID", "ORDER DATE", "ITEMS");
 		
-		String output = String.format("%-20s %-35s %-15s \n", "STUDENT ID", "ORDER DATE", "ITEMS");
-		
-		for (Order order : orderList) {
-			System.out.println(order.toString());
-		}
+		output += retrieveAllOrder(orderList);	
+		System.out.println(output);
+	}
+	
+	public static String retrieveAllOrder(ArrayList<Order> orderList) {
+		String output = "";
+		// write your code here
+		for (int i = 0; i < orderList.size(); i++) {
 
+			output += String.format("%-84s\n", orderList.get(i).toString());
+		}
+		return output;
 	}
 
-	private static void addAllOrder(ArrayList<Order> orderList) {
-		// TODO Auto-generated method stub
-		String id = Helper.readString("Enter Student ID > ");
+	
+	//=============================================AddAllOrder====================================
+	public static Order inputOrder() {
+		String studentid = Helper.readString("Enter Student ID > ");	
 		String orderdate = Helper.readString("Enter Order Date > ");
 		ArrayList<MenuItem> items = new ArrayList<MenuItem>();
+
+		Order order1= new Order(studentid, orderdate, items);
+		return order1;
 		
-		orderList.add(new Order(id, orderdate, items));
-		System.out.println("New order has added");
+	}
+	
+	public static void addAllOrder(ArrayList<Order> orderList, Order order1) {
+		
+		orderList.add(order1);
+		System.out.println("New Order added");
 	}
 
 	private static void deleteAllOrder(ArrayList<Order> orderList) {
