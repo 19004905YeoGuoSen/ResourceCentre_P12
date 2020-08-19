@@ -91,12 +91,23 @@ public class SchoolLunchApp {
 	private static void viewAllOrder(ArrayList<Order> orderList) {
 		// TODO Auto-generated method stub
 		String output = String.format("%-15s %-20s %-30s\n", "STUDENT ID", "ORDER DATE", "ITEMS");
-			
-		for (int i = 0; i < orderList.size(); i++) {
-			output += String.format("%-84s\n", orderList.get(i).toString());
-			}
+		
+		output += retrieveAllOrder(orderList);
 		System.out.println(output);
 	}
+	
+	public static String retrieveAllOrder (ArrayList<Order> orderList) {
+		String output = "";
+		
+		for (int i = 0; i < orderList.size(); i++) {
+			output += String.format("%-84s\n", orderList.get(i).toString());
+		}
+		return output;
+	}
+//		for (int i = 0; i < orderList.size(); i++) {
+//			output += String.format("%-84s\n", orderList.get(i).toString());
+//			}
+//		System.out.println(output);
 		
 	//=============================================addAllOrder==============================================================
 	public static Order inputOrder() {
