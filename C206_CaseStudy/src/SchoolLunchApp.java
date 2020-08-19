@@ -46,7 +46,7 @@ public class SchoolLunchApp {
 		}else if(option ==4) {
 			System.out.println("Bye");
 		}else {
-			System.out.println("Invalid option");
+			System.out.println("Invalid Option");
 		}
 	}
 

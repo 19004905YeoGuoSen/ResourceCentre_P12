@@ -46,7 +46,11 @@ public class MenuItem {
 	}
 	
 	public String toString() {
-		return "";
+		String healthyChoicePrinter = "no";
+		if (healthyChoice) {
+			healthyChoicePrinter = "yes";
+		}
+		return String.format("%-20s %-30s %-15s $%-10.2f", category, name, healthyChoicePrinter, price);
 	}
 	
 	
