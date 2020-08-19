@@ -5,6 +5,7 @@ public class SchoolLunchApp {
 	public static void main(String[] args) {
 		ArrayList<Bill> billList = new ArrayList<Bill>();
 		ArrayList<MenuItem> menuItemList = new ArrayList<MenuItem>();
+		ArrayList<Order> orderList = new ArrayList<Order>();
 		
 		billList.add(new Bill("John", 30, "July 1st"));
 		int option = 0;
@@ -19,7 +20,8 @@ public class SchoolLunchApp {
 				if (orders == 1) {
 					viewAllOrder(orderList);
 				} else if (orders == 2) {
-					addAllOrder(orderList);
+					Order order1 = inputOrder();
+					addAllOrder(orderList, order1);
 				} else if (orders == 3) {
 					deleteAllOrder(orderList);
 				}
@@ -85,7 +87,109 @@ public class SchoolLunchApp {
 		Helper.line(80, "-");
 	}
 	
-	// ===================================================MenuItem=========================================================
+	//=============================================ViewAllOrder============================================================
+	private static void viewAllOrder(ArrayList<Order> orderList) {
+		// TODO Auto-generated method stub
+		String output = String.format("%-15s %-20s %-30s\n", "STUDENT ID", "ORDER DATE", "ITEMS");
+			
+		for (int i = 0; i < orderList.size(); i++) {
+			output += String.format("%-84s\n", orderList.get(i).toString());
+			}
+		System.out.println(output);
+	}
+		
+	//=============================================addAllOrder==============================================================
+	public static Order inputOrder() {
+		String studentid = Helper.readString("Enter Student ID > ");	
+		String orderdate = Helper.readString("Enter Order Date > ");
+		ArrayList<MenuItem> items = new ArrayList<MenuItem>();
+
+		Order order1= new Order(studentid, orderdate, items);
+		return order1;
+			
+	}
+		
+	public static void addAllOrder(ArrayList<Order> orderList,  Order order1) {
+		orderList.add(order1);
+		System.out.println("Order added");
+	}
+
+	//=============================================deleteAllOrder==========================================================
+	private static void deleteAllOrder(ArrayList<Order> orderList) {
+		// TODO Auto-generated method stub
+		System.out.println("1. Student ID");
+		System.out.println("2. Order Date");
+			
+		int num = Helper.readInt("Enter option to search > ");
+			
+		ArrayList<Order> find = new ArrayList<Order>(); 
+			
+		if (num == 1) {
+			String studentid = Helper.readString("Enter Student ID > ");
+			for (Order od : orderList) {
+				if (od.getStudentId().equalsIgnoreCase(studentid)) {
+					find.add(od);
+				}
+			}
+		} else if (num == 2) {
+			String orderdate = Helper.readString("Enter order date > ");
+			for (Order od : orderList) {
+				if (od.getOrderDate().equalsIgnoreCase(orderdate)) {
+					find.add(od);
+				}
+			}
+		}
+	}
+		
+	//=============================================updateAllOrder==========================================================
+	private static void updateAllOrder(ArrayList<Order> orderList) {
+		String orderdate = Helper.readString("Enter Order Date to update > ");
+			
+		boolean isUpdated = false;
+			
+		for(int i = 0; i < orderList.size(); i++) {
+			if(orderList.get(i).getOrderDate() == orderdate) {
+				String neworderdate = Helper.readString("Enter new order date > ");
+				orderList.get(i).setOrderDate(neworderdate);
+				System.out.println("***Order date updated");
+			}
+			if (isUpdated == false) {
+				System.out.println("***Invalid order date");
+			}
+		}
+	}
+		
+	//=============================================searchOrder=============================================================
+	private static void searchOrder(ArrayList<Order> orderList) {
+		String SearchId = Helper.readString("Enter studetn id to search > ");
+		boolean isIdFound = false;
+			
+		String output = String.format("%-15s %-20s %-30s\n", "STUDENT ID", "ORDER DATE", "ITEMS");
+			
+		for (int i = 0; i < orderList.size(); i++) {
+			if(orderList.get(i).getStudentId().contains(SearchId)) {
+				output += String.format("%-15s %-20s %-30s\n", orderList.get(i).getStudentId(), orderList.get(i).getOrderDate(), orderList.get(i).getItems());
+				isIdFound = true;
+			}	
+		}
+		if(isIdFound = true) {
+			System.out.println(output);
+		} else {
+			System.out.println("The order date does not exists");
+		}
+	}
+	
+	//submenu for order
+	private static void order() {
+		// TODO Auto-generated method stub
+		System.out.println("1. View orders");
+		System.out.println("2. Add orders");
+		System.out.println("3. Delete orders");
+		System.out.println("4. Update orders");
+		System.out.println("5. Search orders by student ID");
+		}
+	
+	//===================================================viewAllMenuItem===================================================
 	private static void viewAllMenuItem(ArrayList<MenuItem> menuItemList) {
 		// TODO Auto-generated method stub
 		System.out.println("Menu Item");
@@ -97,6 +201,7 @@ public class SchoolLunchApp {
 		}
 	}
 
+	//===================================================addMenuItem=======================================================
 	private static void addMenuItem(ArrayList<MenuItem> menuItemList) {
 		// TODO Auto-generated method stub
 		String category = Helper.readString("Enter Menu Item category > ");
@@ -119,6 +224,7 @@ public class SchoolLunchApp {
 		menuItemList.add(new MenuItem(category, name, healthyChoice, price));
 	}
 
+	//===================================================deleteMenuItem====================================================
 	private static void deleteMenuItem(ArrayList<MenuItem> menuItemList) {
 		System.out.println("1. Category");
 		System.out.println("2. Name");
@@ -203,7 +309,8 @@ public class SchoolLunchApp {
 		}
 
 	}
-
+	
+	//Submenu for menuItem
 	private static void menuItem() {
 		// TODO Auto-generated method stub
 		System.out.println("1. View Menu Item");
@@ -211,9 +318,13 @@ public class SchoolLunchApp {
 		System.out.println("3. Delete Menu Item");
 	}
 
-	// Delete Bill Main methods
+	
+	//===================================================DeleteBill=========================================================
 
-	// Create Bill main methods
+	
+	
+	
+	//===================================================AddBill===========================================================
 	public static Bill inputBill() {
 		String payee = Helper.readString("Enter Payee's name > ");
 		double totalAmount = Helper.readDouble("Enter total amount > ");
@@ -230,7 +341,7 @@ public class SchoolLunchApp {
 		System.out.println("Bill Added");
 	}
 
-	// View All Bill main methods
+	//===================================================ViewAllBill=========================================================
 	public static String retrieveAllBill(ArrayList<Bill> billList) {
 		String output = "";
 
@@ -250,6 +361,7 @@ public class SchoolLunchApp {
 
 	}
 
+	//Submenu for bill
 	private static void billMenu() {
 		// TODO Auto-generated method stub
 		System.out.println("1. Create Bills");
