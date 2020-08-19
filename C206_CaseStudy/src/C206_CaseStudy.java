@@ -122,6 +122,53 @@ public class C206_CaseStudy {
 			System.out.println("3. Healthy Choice");
 			System.out.println("4. Price");
 			int finderIndex = Helper.readInt("Which method do you wish to search by? > ");
+			
+			ArrayList<MenuItem> findMenuItemList = new ArrayList<MenuItem>(); 
+			
+			if (finderIndex == 1) {
+				String categoryName = Helper.readString("Enter Category Name > ");
+				for (MenuItem mi : menuItemList) {
+					if (mi.getCategory().equalsIgnoreCase(categoryName)) {
+						findMenuItemList.add(mi);
+					}
+				}
+			} else if (finderIndex == 2) {
+				String name = Helper.readString("Enter name > ");
+				for (MenuItem mi : menuItemList) {
+					if (mi.getName().contains(name)) {
+						findMenuItemList.add(mi);
+					}
+				}
+			} else if (finderIndex == 3) {
+				boolean acceptedAns = false;
+				boolean healthyChoice = false;
+				while (!acceptedAns) {
+					char healthyChoiceReader = Helper.readChar("Is the Menu Item a healthy choice (y/n)> ");
+					if (Character.toLowerCase(healthyChoiceReader) == 'y'
+							|| Character.toLowerCase(healthyChoiceReader) == 'n') {
+						acceptedAns = true;
+						if (Character.toLowerCase(healthyChoiceReader) == 'y')
+							healthyChoice = true;
+					} else {
+						System.out.println("Invalid input! Please enter only either y or n");
+					}
+				}
+				
+				for (MenuItem mi : menuItemList) {
+					if (mi.isHealthyChoice() == healthyChoice) {
+						findMenuItemList.add(mi);
+					}
+				}
+			} else if (finderIndex == 4) {
+				System.out.println("Enter price range: ");
+				double topPrice = Helper.readDouble("From: $");
+				double bottomPrice = Helper.readDouble("To: $");
+				for (MenuItem mi : menuItemList) {
+					if (mi.getPrice() > bottomPrice && mi.getPrice() < topPrice) {
+						findMenuItemList.add(mi);
+					}
+				}
+			}
 
 		}
 
