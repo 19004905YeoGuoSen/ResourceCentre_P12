@@ -5,31 +5,57 @@ public class SchoolLunchApp {
 	public static void main(String[] args) {
 		ArrayList<Bill> billList = new ArrayList<Bill>();
 		billList.add(new Bill("John",30, "July 1st"));
-		// Create Bill
-		Helper.line(20, "-");
-        System.out.println("Create Bill");
-        Helper.line(20, "-");
-     
-      Bill bl = inputBill();
-      SchoolLunchApp.addBill(billList, bl);
-      
-      
-
-      
-      
-      
-		// Delete Bill
-//      Helper.line(20, "-");
-//      System.out.println("Delete Bill");
-//      Helper.line(20, "-");
-//      
-//      String payeeName = Helper.readString("Enter Payee's Name > ");
-      
-      //View Bill
+		int option = 0;
+		
+		
+		
+		while (option != 4) {
+			SchoolLunchApp.menu();
+			option = Helper.readInt("Enter an option > ");
+		
+		if(option == 1) {
+			// Create Bill
+			Helper.line(20, "-");
+	        System.out.println("Create Bill");
+	        Helper.line(20, "-");
+	     
+	      Bill bl = inputBill();
+	      SchoolLunchApp.addBill(billList, bl);
+			
+		}else if (option == 2) {
+			// Delete Bill
+		      Helper.line(20, "-");
+		      System.out.println("Delete Bill");
+		      Helper.line(20, "-");
+		    
+		     String payeeName = Helper.readString("Enter Payee's Name > ");
+			
+	
+			}else if(option ==3) {
+				  //View Bill
       Helper.line(20, "-");
       System.out.println("VIEW ALL BILL");
       Helper.line(20, "-");
       SchoolLunchApp.ViewAllBill(billList);
+		
+		
+		
+		
+		
+      
+		}else if(option ==4) {
+			System.out.println("Bye");
+		}else {
+			System.out.println("Invalid option");
+		}
+	}
+
+      
+      
+      
+	
+      
+    
       
       
       
@@ -37,18 +63,12 @@ public class SchoolLunchApp {
 	}
 	
 	
-	// Delete Bill Main methodss
+	// Delete Bill Main methods
 	
 	
 	
 	
 	// Create Bill main methods
-  public static void createBill(ArrayList<Bill> billList) {
-	  Bill bill = new Bill("John", 15.50, null);
-	  billList.add(bill);
-
-    System.out.println("Bill Created!");
-  }
   public static Bill inputBill() {
 	   String payee = Helper.readString("Enter Payee's name > ");
        double totalAmount = Helper.readDouble("Enter total amount > ");
@@ -61,7 +81,7 @@ public class SchoolLunchApp {
 	public static void addBill(ArrayList<Bill> billList, Bill bl) {
 		
 		billList.add(bl);
-		System.out.println("Bill added");
+		System.out.println("Bill Added");
 	}
 		
 		
@@ -84,6 +104,15 @@ public class SchoolLunchApp {
 					System.out.println(output);
 				 
 			 }
+			 
+			 private static void menu() {
+					// TODO Auto-generated method stub
+				 System.out.println("1. Create Bills");
+				 System.out.println("2. Delete Bills");
+				 System.out.println("3. View All Bills");
+				 System.out.println("4. Quit");
+					Helper.line(80, "-");
+				}
 		
 
 		
