@@ -79,22 +79,22 @@ public class C206_CaseStudy {
 		System.out.println("1. Student ID");
 		System.out.println("2. Order Date");
 		
-		int finderIndex = Helper.readInt("Which method do you wish to search by? > ");
+		int num = Helper.readInt("Enter option to search > ");
 		
-		ArrayList<Order> num = new ArrayList<Order>(); 
+		ArrayList<Order> find = new ArrayList<Order>(); 
 		
-		if (finderIndex == 1) {
+		if (num == 1) {
 			String studentid = Helper.readString("Enter Student ID > ");
 			for (Order od : orderList) {
 				if (od.getStudentId().equalsIgnoreCase(studentid)) {
-					num.add(od);
+					find.add(od);
 				}
 			}
-		} else if (finderIndex == 2) {
+		} else if (num == 2) {
 			String orderdate = Helper.readString("Enter order date > ");
 			for (Order od : orderList) {
 				if (od.getOrderDate().equalsIgnoreCase(orderdate)) {
-					num.add(od);
+					find.add(od);
 				}
 			}
 		}
