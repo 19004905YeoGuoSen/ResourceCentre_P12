@@ -46,6 +46,12 @@ public class C206_CaseStudy {
 //===================================================Order=========================================================
 	private static void viewAllOrder(ArrayList<Order> orderList) {
 		// TODO Auto-generated method stub
+		
+		String output = String.format("%-20s %-35s %-15s \n", "STUDENT ID", "ORDER DATE", "ITEMS");
+		
+		for (Order order : orderList) {
+			System.out.println(order.toString());
+		}
 
 	}
 
