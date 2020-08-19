@@ -60,7 +60,7 @@ public class C206_CaseStudyTest {
 		//test if the expected output string same as the list of order retrieved from the SourceCentre
 		allOrder= SchoolLunchApp.retrieveAllOrder(orderList);
 		
-		testOutput = String.format("%-15s %-20s %-30s\n","CB0011", "ASUS Chromebook", "orderx");
+		testOutput = String.format("%-15s %-20s %-30s\n", "Order001", "11/06/2020", new ArrayList<MenuItem>());
 		
 		assertEquals("Check that ViewAllOrderList", testOutput, allOrder);
 	}
