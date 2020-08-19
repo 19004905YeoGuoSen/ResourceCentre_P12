@@ -1,4 +1,3 @@
-import java.awt.MenuItem;
 import java.util.ArrayList;
 
 public class Order {
@@ -12,6 +11,8 @@ public class Order {
 		this.orderDate = orderDate;
 		this.items = items;
 	}
+	
+	
 
 	public String getStudentId() {
 		return studentId;
