@@ -23,7 +23,6 @@ public class C206_CaseStudy {
 				} else if (orders == 2) {
 					Order order1 = inputOrder();
 					addAllOrder(orderList, order1);
-//					addAllOrder(orderList);
 				} else if (orders == 3) {
 					deleteAllOrder(orderList);
 				}
@@ -48,24 +47,15 @@ public class C206_CaseStudy {
 	//=============================================ViewAllOrder====================================
 	private static void viewAllOrder(ArrayList<Order> orderList) {
 		// TODO Auto-generated method stub
-		String output = String.format("%-15s %-20s %-30s \n", "STUDENT ID", "ORDER DATE", "ITEMS");
+		String output = String.format("%-15s %-20s %-30s\n", "STUDENT ID", "ORDER DATE", "ITEMS");
 		
-		output += retrieveAllOrder(orderList);	
+		for (int i = 0; i < orderList.size(); i++) {
+			output += String.format("%-84s\n", orderList.get(i).toString());
+		}
 		System.out.println(output);
 	}
 	
-	public static String retrieveAllOrder(ArrayList<Order> orderList) {
-		String output = "";
-		// write your code here
-		for (int i = 0; i < orderList.size(); i++) {
-
-			output += String.format("%-84s\n", orderList.get(i).toString());
-		}
-		return output;
-	}
-
-	
-	//=============================================AddAllOrder====================================
+	//=============================================addAllOrder====================================
 	public static Order inputOrder() {
 		String studentid = Helper.readString("Enter Student ID > ");	
 		String orderdate = Helper.readString("Enter Order Date > ");
@@ -76,12 +66,12 @@ public class C206_CaseStudy {
 		
 	}
 	
-	public static void addAllOrder(ArrayList<Order> orderList, Order order1) {
-		
+	public static void addAllOrder(ArrayList<Order> orderList,  Order order1) {
 		orderList.add(order1);
-		System.out.println("New Order added");
+		System.out.println("Order added");
 	}
 
+	//=============================================deleteAllOrder====================================
 	private static void deleteAllOrder(ArrayList<Order> orderList) {
 		// TODO Auto-generated method stub
 
