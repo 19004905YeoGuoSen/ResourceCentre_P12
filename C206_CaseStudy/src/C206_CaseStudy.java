@@ -89,8 +89,9 @@ public class C206_CaseStudy {
 			// TODO Auto-generated method stub
 			System.out.println("Menu Item");
 			Helper.line(80, "-");
+			System.out.println(String.format("%-20s %-30s %-15s %-10s", "Category", "Name", "Healthy Choice", "Price"));
 			for (MenuItem mi : menuItemList) {
-				mi.toString();
+				System.out.println(mi.toString());
 			}
 		}
 
@@ -167,6 +168,32 @@ public class C206_CaseStudy {
 					if (mi.getPrice() > bottomPrice && mi.getPrice() < topPrice) {
 						findMenuItemList.add(mi);
 					}
+				}
+			}
+			
+			if (findMenuItemList.size() == 0) {
+				System.out.println("Nothing is found!");
+			} else {
+				System.out.println(String.format("Index %-20s %-30s %-15s %-10s", "Category", "Name", "Healthy Choice", "Price"));
+				for (int i = 0; i < findMenuItemList.size(); i++) {
+					System.out.println(String.format("%-5d %s", i+1, findMenuItemList.get(i).toString()));
+				}
+				
+				int choice = Helper.readInt("Enter the index > ");				
+				if (choice <= 0 || choice > findMenuItemList.size()) {
+					System.out.println("Invalid input!");
+				} else {
+					String name = findMenuItemList.get(choice - 1).getName();
+					String category = findMenuItemList.get(choice - 1).getCategory();
+					boolean healthyChoice = findMenuItemList.get(choice - 1).isHealthyChoice();
+					double price = findMenuItemList.get(choice - 1).getPrice();
+					
+					for (int x = 0; x < menuItemList.size(); x++) {
+						if (menuItemList.get(x).getName().equals(name) && menuItemList.get(x).getCategory().equals(category) && menuItemList.get(x).isHealthyChoice() == healthyChoice && menuItemList.get(x).getPrice() == price)
+							menuItemList.remove(x);
+					}
+					
+					System.out.println(name + " is removed!");
 				}
 			}
 
