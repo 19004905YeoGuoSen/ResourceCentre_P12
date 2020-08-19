@@ -57,7 +57,12 @@ public class C206_CaseStudy {
 
 	private static void addAllOrder(ArrayList<Order> orderList) {
 		// TODO Auto-generated method stub
-
+		String id = Helper.readString("Enter Student ID > ");
+		String orderdate = Helper.readString("Enter Order Date > ");
+		ArrayList<MenuItem> items = new ArrayList<MenuItem>();
+		
+		orderList.add(new Order(id, orderdate, items));
+		System.out.println("New order has added");
 	}
 
 	private static void deleteAllOrder(ArrayList<Order> orderList) {
