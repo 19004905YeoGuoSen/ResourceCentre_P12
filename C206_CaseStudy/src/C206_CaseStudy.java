@@ -27,6 +27,8 @@ public class C206_CaseStudy {
 					deleteAllOrder(orderList);
 				} else if (orders == 4) {
 					updateAllOrder(orderList);
+				} else if (orders == 5) {
+					searchOrder(orderList);
 				}
 
 			} else if (option == 3) {
@@ -103,26 +105,52 @@ public class C206_CaseStudy {
 	
 	//=============================================updateAllOrder====================================
 	private static void updateAllOrder(ArrayList<Order> orderList) {
-		boolean isFound = false;
+		String orderdate = Helper.readString("Enter Order Date to update > ");
 		
-		String orderdate = Helper.readString("Enter order date");
+		boolean isUpdated = false;
 		
 		for(int i = 0; i < orderList.size(); i++) {
-			if(orderList.get(i).getItems().equals(orderdate)) {
-				String neworderdate = Helper.readString("Enter new order date");
-				
+			if(orderList.get(i).getOrderDate() == orderdate) {
+				String neworderdate = Helper.readString("Enter new order date > ");
 				orderList.get(i).setOrderDate(neworderdate);
-			} else {
-				System.out.println("The orderr date is incorrect");
+				System.out.println("***Order date updated");
 			}
-			isFound = true;
-			break;
+			if (isUpdated == false) {
+				System.out.println("***Invalid order date");
+			}
 		}
-		if(isFound == false) {
-			System.out.println("The order date not exists");
-		}
+		
+//		boolean isFound = false;
+//		
+//		String orderdate = Helper.readString("Enter order date");
+//		
+//		for(int i = 0; i < orderList.size(); i++) {
+//			if(orderList.get(i).getItems().equals(orderdate)) {
+//				String neworderdate = Helper.readString("Enter new order date");
+//				
+//				orderList.get(i).setOrderDate(neworderdate);
+//			} else {
+//				System.out.println("The orderr date is incorrect");
+//			}
+//			isFound = true;
+//			break;
+//		}
+//		if(isFound == false) {
+//			System.out.println("The order date not exists");
+//		}
 	}
 	
+	//=============================================searchOrder====================================
+	private static void searchOrder(ArrayList<Order> orderList) {
+		boolean isIdFound = false;
+		Helper.line(80, "-");
+		
+		for (int i = 0; i < orderList.size(); i++) {
+			String studentid = orderList.get(i).getStudentId();
+			
+			if(studentid.equalsIgnoreCase(id))
+		}
+	}
 	
 	private static void order() {
 		// TODO Auto-generated method stub
@@ -130,6 +158,7 @@ public class C206_CaseStudy {
 		System.out.println("2. Add orders");
 		System.out.println("3. Delete orders");
 		System.out.println("4. Update orders");
+		System.out.println("5. Search orders by student ID");
 	}
 	
 		//===================================================MenuItem=========================================================
