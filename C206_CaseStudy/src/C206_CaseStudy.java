@@ -100,7 +100,30 @@ public class C206_CaseStudy {
 		}
 
 	}
-
+	
+	//=============================================updateAllOrder====================================
+	private static void updateAllOrder(ArrayList<Order> orderList) {
+		boolean isFound = false;
+		
+		String orderdate = Helper.readString("Enter order date");
+		
+		for(int i = 0; i < orderList.size(); i++) {
+			if(orderList.get(i).getItems().equals(orderdate)) {
+				String neworderdate = Helper.readString("Enter new order date");
+				
+				orderList.get(i).setOrderDate(neworderdate);
+			} else {
+				System.out.println("The orderr date is incorrect");
+			}
+			isFound = true;
+			break;
+		}
+		if(isFound == false) {
+			System.out.println("The order date not exists");
+		}
+	}
+	
+	
 	private static void order() {
 		// TODO Auto-generated method stub
 		System.out.println("1. View orders");
