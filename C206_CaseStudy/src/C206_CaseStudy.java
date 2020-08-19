@@ -11,7 +11,7 @@ public class C206_CaseStudy {
 		
 		int option = 0;
 		while(option != OPTION_QUIT) {
-			C206_CaseStudy.menu();
+			menu();
 			option = Helper.readInt("Enter an option > ");
 			
 			if(option == 1) {
@@ -19,11 +19,11 @@ public class C206_CaseStudy {
 				int orders = Helper.readInt("Enter option to select > ");
 				
 				if(orders == 1) {
-					C206_CaseStudy.viewAllOrder(orderList);
+					viewAllOrder(orderList);
 				} else if (orders == 2) {
-					C206_CaseStudy.addAllOrder(orderList);
+					addAllOrder(orderList);
 				} else if (orders == 3) {
-					C206_CaseStudy.deleteAllOrder(orderList);
+					deleteAllOrder(orderList);
 				}
 			
 			} 
