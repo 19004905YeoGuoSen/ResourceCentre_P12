@@ -37,7 +37,7 @@ public class SchoolLunchApp {
 	}
 	
 	
-	// Delete Bill Main methods
+	// Delete Bill Main methodss
 	
 	
 	
