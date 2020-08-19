@@ -74,6 +74,28 @@ public class C206_CaseStudy {
 	//=============================================deleteAllOrder====================================
 	private static void deleteAllOrder(ArrayList<Order> orderList) {
 		// TODO Auto-generated method stub
+		System.out.println("1. Student ID");
+		System.out.println("2. Order Date");
+		
+		int finderIndex = Helper.readInt("Which method do you wish to search by? > ");
+		
+		ArrayList<Order> num = new ArrayList<Order>(); 
+		
+		if (finderIndex == 1) {
+			String studentid = Helper.readString("Enter Student ID > ");
+			for (Order od : orderList) {
+				if (od.getStudentId().equalsIgnoreCase(studentid)) {
+					num.add(od);
+				}
+			}
+		} else if (finderIndex == 2) {
+			String orderdate = Helper.readString("Enter order date > ");
+			for (Order od : orderList) {
+				if (od.getOrderDate().equalsIgnoreCase(orderdate)) {
+					num.add(od);
+				}
+			}
+		}
 
 	}
 
@@ -102,7 +124,7 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 	}
 	
-	//===================================================MenuItem=========================================================
+		//===================================================MenuItem=========================================================
 		private static void viewAllMenuItem(ArrayList<MenuItem> menuItemList) {
 			// TODO Auto-generated method stub
 			System.out.println("Menu Item");
