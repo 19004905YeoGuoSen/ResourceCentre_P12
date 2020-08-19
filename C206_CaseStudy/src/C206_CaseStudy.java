@@ -119,36 +119,26 @@ public class C206_CaseStudy {
 				System.out.println("***Invalid order date");
 			}
 		}
-		
-//		boolean isFound = false;
-//		
-//		String orderdate = Helper.readString("Enter order date");
-//		
-//		for(int i = 0; i < orderList.size(); i++) {
-//			if(orderList.get(i).getItems().equals(orderdate)) {
-//				String neworderdate = Helper.readString("Enter new order date");
-//				
-//				orderList.get(i).setOrderDate(neworderdate);
-//			} else {
-//				System.out.println("The orderr date is incorrect");
-//			}
-//			isFound = true;
-//			break;
-//		}
-//		if(isFound == false) {
-//			System.out.println("The order date not exists");
-//		}
 	}
 	
 	//=============================================searchOrder====================================
 	private static void searchOrder(ArrayList<Order> orderList) {
+		String SearchId = Helper.readString("Enter studetn id to search > ");
 		boolean isIdFound = false;
-		Helper.line(80, "-");
+		
+		String output = String.format("%-15s %-20s %-30s\n", "STUDENT ID", "ORDER DATE", "ITEMS");
 		
 		for (int i = 0; i < orderList.size(); i++) {
-			String studentid = orderList.get(i).getStudentId();
+			if(orderList.get(i).getStudentId().contains(SearchId)) {
+				output += String.format("%-15s %-20s %-30s\n", orderList.get(i).getStudentId(), orderList.get(i).getOrderDate(), orderList.get(i).getItems());
+				isIdFound = true;
+			}
 			
-			if(studentid.equalsIgnoreCase(id))
+		}
+		if(isIdFound = true) {
+			System.out.println(output);
+		} else {
+			System.out.println("The order date does not exists");
 		}
 	}
 	
