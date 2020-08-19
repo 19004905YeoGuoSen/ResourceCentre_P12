@@ -53,10 +53,17 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 		String output = String.format("%-15s %-20s %-30s\n", "STUDENT ID", "ORDER DATE", "ITEMS");
 		
+		output += retrieveAllOrder(orderList);
+		System.out.println(output);
+	}
+	
+	public static String retrieveAllOrder (ArrayList<Order> orderList) {
+		String output = "";
+		
 		for (int i = 0; i < orderList.size(); i++) {
 			output += String.format("%-84s\n", orderList.get(i).toString());
 		}
-		System.out.println(output);
+		return output;
 	}
 	
 	//=============================================addAllOrder====================================
