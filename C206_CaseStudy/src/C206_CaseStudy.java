@@ -25,6 +25,8 @@ public class C206_CaseStudy {
 					addAllOrder(orderList, order1);
 				} else if (orders == 3) {
 					deleteAllOrder(orderList);
+				} else if (orders == 4) {
+					updateAllOrder(orderList);
 				}
 
 			} else if (option == 3) {
@@ -104,24 +106,7 @@ public class C206_CaseStudy {
 		System.out.println("1. View orders");
 		System.out.println("2. Add orders");
 		System.out.println("3. Delete orders");
-	}
-
-//===================================================menu()=========================================================
-	private static void menu() {
-		// TODO Auto-generated method stub
-		C206_CaseStudy.setHeader("SCHOOL LUNCH APP");
-		System.out.println("1. Orders");
-		System.out.println("2. User Account");
-		System.out.println("3. Menu Items");
-		System.out.println("4. Bills");
-		System.out.println("5. Quit");
-		Helper.line(80, "-");
-	}
-
-	private static void setHeader(String header) {
-		Helper.line(80, "-");
-		System.out.println(header);
-		Helper.line(80, "-");
+		System.out.println("4. Update orders");
 	}
 	
 		//===================================================MenuItem=========================================================
@@ -245,6 +230,23 @@ public class C206_CaseStudy {
 			System.out.println("2. Add Menu Item");
 			System.out.println("3. Delete Menu Item");
 		}
+	
+		//===================================================optionmenu()=========================================================
+		private static void menu() {
+			// TODO Auto-generated method stub
+			C206_CaseStudy.setHeader("SCHOOL LUNCH APP");
+			System.out.println("1. Orders");
+			System.out.println("2. User Account");
+			System.out.println("3. Menu Items");
+			System.out.println("4. Bills");
+			System.out.println("5. Quit");
+			Helper.line(80, "-");
+		}
 
+		private static void setHeader(String header) {
+			Helper.line(80, "-");
+			System.out.println(header);
+			Helper.line(80, "-");
+		}
 
 }
