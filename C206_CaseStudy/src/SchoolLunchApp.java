@@ -182,22 +182,32 @@ public class SchoolLunchApp {
 	}
 		
 	//=============================================updateAllOrder==========================================================
-	public static void updateAllOrder(ArrayList<Order> orderList) {
-		String orderdate = Helper.readString("Enter Order Date to update > ");
-			
+	private static void updateAllOrder(ArrayList<Order> orderList) {
+		String studentid = Helper.readString("Enter Student ID > ");
+		
 		boolean isUpdated = false;
-			
+		
 		for(int i = 0; i < orderList.size(); i++) {
-			if(orderList.get(i).getOrderDate() == orderdate) {
-				String neworderdate = Helper.readString("Enter new order date > ");
-				orderList.get(i).setOrderDate(neworderdate);
-				System.out.println("***Order date updated");
+			if(studentid.equalsIgnoreCase(orderList.get(i).getStudentId())) {
+				String orderdate = Helper.readString("Enter order date to update > ");
+				
+				if(orderdate.equals(orderList.get(i).getOrderDate())) {
+					String neworderdate = Helper.readString("Enter new order date > ");
+					orderList.get(i).setOrderDate(neworderdate);
+					System.out.println("Order date updated");
+				} else {
+					System.out.println("The order date is incorrect");
+				}
 				isUpdated = true;
-			}
-			if (isUpdated == false) {
-				System.out.println("***Invalid order date");
-			}
+				break;
+			} 
+				
 		}
+		
+		if (isUpdated == false) {
+			System.out.println("***Invalid order date");
+		}
+		
 	}
 		
 	//=============================================searchOrder=============================================================
