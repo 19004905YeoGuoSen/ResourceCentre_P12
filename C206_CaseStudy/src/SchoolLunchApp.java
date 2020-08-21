@@ -108,10 +108,6 @@ public class SchoolLunchApp {
 		}
 		return output;
 	}
-//		for (int i = 0; i < orderList.size(); i++) {
-//			output += String.format("%-84s\n", orderList.get(i).toString());
-//			}
-//		System.out.println(output);
 		
 	//=============================================addAllOrder==============================================================
 	public static Order inputOrder() {
