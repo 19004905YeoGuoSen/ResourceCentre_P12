@@ -6,7 +6,7 @@ public class SchoolLunchApp {
 		ArrayList<Bill> billList = new ArrayList<Bill>();
 		ArrayList<MenuItem> menuItemList = new ArrayList<MenuItem>();
 		ArrayList<Order> orderList = new ArrayList<Order>();
-		
+
 		billList.add(new Bill("John", 30, "July 1st"));
 		int option = 0;
 		while (option != 5) {
@@ -26,7 +26,7 @@ public class SchoolLunchApp {
 					deleteAllOrder(orderList);
 				} else if (orders == 4) {
 					updateAllOrder(orderList);
-				} else if(orders == 5) {
+				} else if (orders == 5) {
 					searchOrderByStudentID(orderList);
 				}
 
@@ -40,6 +40,12 @@ public class SchoolLunchApp {
 					addMenuItem(menuItemList);
 				else if (menuChoice == 3)
 					deleteMenuItem(menuItemList);
+				else if (menuChoice == 4)
+					updateMenuItem(menuItemList);
+				else if (menuChoice == 5)
+					findMenuItem(menuItemList);
+				else
+					System.out.println("Invalid Input!");
 
 			} else if (option == 4) {
 				SchoolLunchApp.billMenu();
@@ -77,7 +83,7 @@ public class SchoolLunchApp {
 		}
 
 	}
-	
+
 	private static void menu() {
 		// TODO Auto-generated method stub
 		Helper.line(80, "-");
@@ -90,57 +96,57 @@ public class SchoolLunchApp {
 		System.out.println("5. Quit");
 		Helper.line(80, "-");
 	}
-	
-	//=============================================ViewAllOrder============================================================
+
+	// =============================================ViewAllOrder============================================================
 	private static void viewAllOrder(ArrayList<Order> orderList) {
 		// TODO Auto-generated method stub
 		System.out.println("VIEW ALL ORDERS");
 		Helper.line(80, "-");
 		String output = String.format("%-15s %-20s %-30s\n", "STUDENT ID", "ORDER DATE", "ITEMS");
-		
+
 		output += retrieveAllOrder(orderList);
 		System.out.println(output);
 	}
-	
-	public static String retrieveAllOrder (ArrayList<Order> orderList) {
+
+	public static String retrieveAllOrder(ArrayList<Order> orderList) {
 		String output = "";
-		
+
 		for (int i = 0; i < orderList.size(); i++) {
 			output += String.format("%-84s\n", orderList.get(i).toString());
 		}
 		return output;
 	}
-		
-	//=============================================addAllOrder==============================================================
+
+	// =============================================addAllOrder==============================================================
 	public static Order inputOrder() {
 		System.out.println("ADD ORDER");
 		Helper.line(80, "-");
-		String studentid = Helper.readString("Enter Student ID > ");	
+		String studentid = Helper.readString("Enter Student ID > ");
 		String orderdate = Helper.readString("Enter Order Date > ");
 		ArrayList<MenuItem> items = new ArrayList<MenuItem>();
 
-		Order order1= new Order(studentid, orderdate, items);
+		Order order1 = new Order(studentid, orderdate, items);
 		return order1;
-			
+
 	}
-		
-	public static void addAllOrder(ArrayList<Order> orderList,  Order order1) {
+
+	public static void addAllOrder(ArrayList<Order> orderList, Order order1) {
 		orderList.add(order1);
 		System.out.println("New Order added");
 	}
 
-	//=============================================deleteAllOrder==========================================================
+	// =============================================deleteAllOrder==========================================================
 	private static void deleteAllOrder(ArrayList<Order> orderList) {
 		// TODO Auto-generated method stub
 		System.out.println("DELETE ORDER");
 		Helper.line(80, "-");
 		System.out.println("1. Student ID");
 		System.out.println("2. Order Date");
-			
+
 		int num = Helper.readInt("Enter option to search > ");
-			
-		ArrayList<Order> findList = new ArrayList<Order>(); 
-			
+
+		ArrayList<Order> findList = new ArrayList<Order>();
+
 		if (num == 1) {
 			String studentid = Helper.readString("Enter Student ID > ");
 			for (Order od : orderList) {
@@ -156,12 +162,11 @@ public class SchoolLunchApp {
 				}
 			}
 		}
-		
+
 		if (findList.size() == 0) {
 			System.out.println("Nothing is found!");
 		} else {
-			System.out.println(
-					String.format("%-15s %-20s %-30s", "STUDENT ID", "ORDER DATE", "ITEMS"));
+			System.out.println(String.format("%-15s %-20s %-30s", "STUDENT ID", "ORDER DATE", "ITEMS"));
 			for (int i = 0; i < findList.size(); i++) {
 				System.out.println(String.format("%s", findList.get(i).toString()));
 			}
@@ -174,29 +179,31 @@ public class SchoolLunchApp {
 				String oderdate = findList.get(choice - 1).getOrderDate();
 
 				for (int x = 0; x < orderList.size(); x++) {
-					if (orderList.get(x).getStudentId().equals(studentid) && orderList.get(x).getOrderDate().equals(oderdate)); 
-						orderList.remove(x);
+					if (orderList.get(x).getStudentId().equals(studentid)
+							&& orderList.get(x).getOrderDate().equals(oderdate))
+						;
+					orderList.remove(x);
 				}
 
 				System.out.println("Order deleted");
 			}
 		}
 	}
-		
-	//=============================================updateAllOrder==========================================================
+
+	// =============================================updateAllOrder==========================================================
 	private static void updateAllOrder(ArrayList<Order> orderList) {
 		System.out.println("UPDATE ORDERS");
 		Helper.line(80, "-");
-		
+
 		String studentid = Helper.readString("Enter Student ID > ");
-		
+
 		boolean isUpdated = false;
-		
-		for(int i = 0; i < orderList.size(); i++) {
-			if(studentid.equalsIgnoreCase(orderList.get(i).getStudentId())) {
+
+		for (int i = 0; i < orderList.size(); i++) {
+			if (studentid.equalsIgnoreCase(orderList.get(i).getStudentId())) {
 				String orderdate = Helper.readString("Enter order date to update > ");
-				
-				if(orderdate.equals(orderList.get(i).getOrderDate())) {
+
+				if (orderdate.equals(orderList.get(i).getOrderDate())) {
 					String neworderdate = Helper.readString("Enter new order date > ");
 					orderList.get(i).setOrderDate(neworderdate);
 					System.out.println("Order date updated");
@@ -205,40 +212,42 @@ public class SchoolLunchApp {
 				}
 				isUpdated = true;
 				break;
-			} 
-				
+			}
+
 		}
-		
+
 		if (isUpdated == false) {
 			System.out.println("***Invalid order date");
 		}
-		
+
 	}
-		
-	//=============================================searchOrder by student ID=============================================================
+
+	// =============================================searchOrder by student
+	// ID=============================================================
 	private static void searchOrderByStudentID(ArrayList<Order> orderList) {
 		System.out.println("SEARCH ORDERS BY STUDENT ID");
 		Helper.line(80, "-");
-		
+
 		String SearchId = Helper.readString("Enter studetn id to search > ");
 		boolean isIdFound = false;
-			
+
 		String output = String.format("%-15s %-20s %-30s\n", "STUDENT ID", "ORDER DATE", "ITEMS");
-			
+
 		for (int i = 0; i < orderList.size(); i++) {
-			if(orderList.get(i).getStudentId().contains(SearchId)) {
-				output += String.format("%-15s %-20s %-30s\n", orderList.get(i).getStudentId(), orderList.get(i).getOrderDate(), orderList.get(i).getItems());
+			if (orderList.get(i).getStudentId().contains(SearchId)) {
+				output += String.format("%-15s %-20s %-30s\n", orderList.get(i).getStudentId(),
+						orderList.get(i).getOrderDate(), orderList.get(i).getItems());
 				isIdFound = true;
-			}	
+			}
 		}
-		if(isIdFound = true) {
+		if (isIdFound = true) {
 			System.out.println(output);
 		} else {
 			System.out.println("The order date does not exists");
 		}
 	}
-	
-	//submenu for order
+
+	// submenu for order
 	private static void order() {
 		// TODO Auto-generated method stub
 		System.out.println("1. View orders");
@@ -246,21 +255,49 @@ public class SchoolLunchApp {
 		System.out.println("3. Delete orders");
 		System.out.println("4. Update orders");
 		System.out.println("5. Search orders by student ID");
-		}
-	
-	//===================================================viewAllMenuItem===================================================
+	}
+
+	// ===================================================viewAllMenuItem===================================================
 	private static void viewAllMenuItem(ArrayList<MenuItem> menuItemList) {
 		// TODO Auto-generated method stub
+		ArrayList<String> allCategoryName = new ArrayList<String>();
+
+		for (MenuItem mi : menuItemList) {
+			String catName = mi.getCategory().toLowerCase();
+
+			boolean uniqueName = true;
+			for (String s : allCategoryName) {
+				if (s.equals(catName))
+					uniqueName = false;
+			}
+
+			if (uniqueName)
+				allCategoryName.add(catName);
+		}
+
 		System.out.println("Menu Item");
 		Helper.line(80, "-");
 		if (menuItemList.size() > 0)
 			System.out.println(String.format("%-20s %-30s %-15s %-10s", "Category", "Name", "Healthy Choice", "Price"));
+
+		ArrayList<MenuItem> tempMenuItemList = new ArrayList<MenuItem>();
 		for (MenuItem mi : menuItemList) {
-			System.out.println(mi.toString());
+			tempMenuItemList.add(mi);
+		}
+
+		while (tempMenuItemList.size() != 0) {
+			for (int i = 0; i < tempMenuItemList.size(); i++) {
+				if (tempMenuItemList.get(i).getCategory().toLowerCase().equalsIgnoreCase(allCategoryName.get(0))) {
+					System.out.println(tempMenuItemList.get(i).toString());
+					tempMenuItemList.remove(i);
+				}
+			}
+			
+			allCategoryName.remove(0);
 		}
 	}
 
-	//===================================================addMenuItem=======================================================
+	// ===================================================addMenuItem=======================================================
 	private static void addMenuItem(ArrayList<MenuItem> menuItemList) {
 		// TODO Auto-generated method stub
 		String category = Helper.readString("Enter Menu Item category > ");
@@ -279,11 +316,17 @@ public class SchoolLunchApp {
 			}
 
 		}
-		double price = Helper.readDouble("Enter Menu Item Price > ");
+		double price = -1.0;
+		while (price <= 0) {
+			price = Helper.readDouble("Enter Menu Item Price > ");
+			if (price <= 0)
+				System.out.println("Please enter a value more than 0!");
+		}
 		menuItemList.add(new MenuItem(category, name, healthyChoice, price));
+		System.out.println("New menu item added!");
 	}
 
-	//===================================================deleteMenuItem====================================================
+	// ===================================================deleteMenuItem====================================================
 	private static void deleteMenuItem(ArrayList<MenuItem> menuItemList) {
 		System.out.println("1. Category");
 		System.out.println("2. Name");
@@ -329,8 +372,8 @@ public class SchoolLunchApp {
 			}
 		} else if (finderIndex == 4) {
 			System.out.println("Enter price range: ");
-			double topPrice = Helper.readDouble("From: $");
-			double bottomPrice = Helper.readDouble("To: $");
+			double bottomPrice = Helper.readDouble("From: $");
+			double topPrice = Helper.readDouble("To: $");
 			for (MenuItem mi : menuItemList) {
 				if (mi.getPrice() > bottomPrice && mi.getPrice() < topPrice) {
 					findMenuItemList.add(mi);
@@ -368,22 +411,191 @@ public class SchoolLunchApp {
 		}
 
 	}
-	
-	//Submenu for menuItem
+
+	// ===================================================updateMenuItem====================================================
+
+	private static void updateMenuItem(ArrayList<MenuItem> menuItemList) {
+		System.out.println("1. Category");
+		System.out.println("2. Name");
+		System.out.println("3. Healthy Choice");
+		System.out.println("4. Price");
+		int finderIndex = Helper.readInt("Which method do you wish to search by? > ");
+
+		ArrayList<MenuItem> findMenuItemList = new ArrayList<MenuItem>();
+
+		if (finderIndex == 1) {
+			String categoryName = Helper.readString("Enter Category Name > ");
+			for (MenuItem mi : menuItemList) {
+				if (mi.getCategory().equalsIgnoreCase(categoryName)) {
+					findMenuItemList.add(mi);
+				}
+			}
+		} else if (finderIndex == 2) {
+			String name = Helper.readString("Enter name > ");
+			for (MenuItem mi : menuItemList) {
+				if (mi.getName().contains(name)) {
+					findMenuItemList.add(mi);
+				}
+			}
+		} else if (finderIndex == 3) {
+			boolean acceptedAns = false;
+			boolean healthyChoice = false;
+			while (!acceptedAns) {
+				char healthyChoiceReader = Helper.readChar("Is the Menu Item a healthy choice (y/n)> ");
+				if (Character.toLowerCase(healthyChoiceReader) == 'y'
+						|| Character.toLowerCase(healthyChoiceReader) == 'n') {
+					acceptedAns = true;
+					if (Character.toLowerCase(healthyChoiceReader) == 'y')
+						healthyChoice = true;
+				} else {
+					System.out.println("Invalid input! Please enter only either y or n");
+				}
+			}
+
+			for (MenuItem mi : menuItemList) {
+				if (mi.isHealthyChoice() == healthyChoice) {
+					findMenuItemList.add(mi);
+				}
+			}
+		} else if (finderIndex == 4) {
+			System.out.println("Enter price range: ");
+			double bottomPrice = Helper.readDouble("From: $");
+			double topPrice = Helper.readDouble("To: $");
+			for (MenuItem mi : menuItemList) {
+				if (mi.getPrice() > bottomPrice && mi.getPrice() < topPrice) {
+					findMenuItemList.add(mi);
+				}
+			}
+		}
+
+		if (findMenuItemList.size() == 0) {
+			System.out.println("Nothing is found!");
+		} else {
+			System.out.println(
+					String.format("Index %-20s %-30s %-15s %-10s", "Category", "Name", "Healthy Choice", "Price"));
+			for (int i = 0; i < findMenuItemList.size(); i++) {
+				System.out.println(String.format("%-5d %s", i + 1, findMenuItemList.get(i).toString()));
+			}
+
+			int choice = Helper.readInt("Enter the index > ");
+			if (choice <= 0 || choice > findMenuItemList.size()) {
+				System.out.println("Invalid input!");
+			} else {
+				String name = findMenuItemList.get(choice - 1).getName();
+				String category = findMenuItemList.get(choice - 1).getCategory();
+				boolean healthyChoice = findMenuItemList.get(choice - 1).isHealthyChoice();
+				double price = findMenuItemList.get(choice - 1).getPrice();
+
+				for (int x = 0; x < menuItemList.size(); x++) {
+					if (menuItemList.get(x).getName().equals(name) && menuItemList.get(x).getCategory().equals(category)
+							&& menuItemList.get(x).isHealthyChoice() == healthyChoice
+							&& menuItemList.get(x).getPrice() == price) {
+						boolean moreChanges = true;
+						while (moreChanges) {
+							Helper.line(60, "-");
+							System.out.println(menuItemList.get(x).toString());
+
+							System.out.println("1. Category");
+							System.out.println("2. Name");
+							System.out.println("3. Healthy Choice");
+							System.out.println("4. Price");
+							int changeNum = Helper.readInt("What do you wish to change? > ");
+
+							if (changeNum == 1) {
+								menuItemList.get(x).setCategory(Helper.readString("Enter new Category Name > "));
+
+							} else if (changeNum == 2) {
+								menuItemList.get(x).setName(Helper.readString("Enter new Menu Item Name > "));
+
+							} else if (changeNum == 3) {
+								boolean acceptedAns = false;
+								boolean newHealthy = false;
+
+								while (!acceptedAns) {
+									char healthyReader = Helper.readChar("Update Menu Item healthy choice (y/n)> ");
+									if (Character.toLowerCase(healthyReader) == 'y'
+											|| Character.toLowerCase(healthyReader) == 'n') {
+										acceptedAns = true;
+										if (Character.toLowerCase(healthyReader) == 'y')
+											newHealthy = true;
+									} else {
+										System.out.println("Invalid input! Please enter only either y or n");
+									}
+								}
+
+								menuItemList.get(x).setHealthyChoice(newHealthy);
+
+							} else if (changeNum == 4) {
+								double newPrice = -1;
+								while (newPrice <= 0) {
+									newPrice = Helper.readDouble("Enter new Price > ");
+									if (newPrice <= 0)
+										System.out.println("Enter a price that is higher than 0!");
+								}
+
+								menuItemList.get(x).setPrice(newPrice);
+
+							} else {
+								System.out.println("Invalid Input!");
+							}
+
+							boolean acceptedAns = false;
+
+							while (!acceptedAns) {
+								char healthyReader = Helper.readChar(
+										"Any more update to make on " + menuItemList.get(x).getName() + " (y/n)> ");
+								if (Character.toLowerCase(healthyReader) == 'y'
+										|| Character.toLowerCase(healthyReader) == 'n') {
+									acceptedAns = true;
+									if (Character.toLowerCase(healthyReader) == 'n')
+										moreChanges = false;
+								} else {
+									System.out.println("Invalid input! Please enter only either y or n");
+								}
+							}
+
+						}
+					}
+
+				}
+			}
+		}
+	}
+	// ===================================================findMenuItem====================================================
+
+	private static void findMenuItem(ArrayList<MenuItem> menuItemList) {
+		String finderName = Helper.readString("Enter name to search > ");
+
+		ArrayList<MenuItem> finderList = new ArrayList<MenuItem>();
+
+		for (MenuItem mi : menuItemList) {
+			if (mi.getName().toLowerCase().contains(finderName.toLowerCase()))
+				finderList.add(mi);
+		}
+
+		if (finderList.size() == 0) {
+			System.out.println("No Result");
+		} else {
+			System.out.println(String.format("%-20s %-30s %-15s %-10s", "Category", "Name", "Healthy Choice", "Price"));
+			for (MenuItem mi : menuItemList) {
+				System.out.println(mi.toString());
+			}
+		}
+	}
+
+	// Submenu for menuItem
 	private static void menuItem() {
 		// TODO Auto-generated method stub
 		System.out.println("1. View Menu Item");
 		System.out.println("2. Add Menu Item");
 		System.out.println("3. Delete Menu Item");
+		System.out.println("4. Update Menu Item");
+		System.out.println("5. Find Menu Item");
 	}
 
-	
-	//===================================================DeleteBill=========================================================
+	// ===================================================DeleteBill=========================================================
 
-	
-	
-	
-	//===================================================AddBill===========================================================
+	// ===================================================AddBill===========================================================
 	public static Bill inputBill() {
 		String payee = Helper.readString("Enter Payee's name > ");
 		double totalAmount = Helper.readDouble("Enter total amount > ");
@@ -400,7 +612,7 @@ public class SchoolLunchApp {
 		System.out.println("Bill Added");
 	}
 
-	//===================================================ViewAllBill=========================================================
+	// ===================================================ViewAllBill=========================================================
 	public static String retrieveAllBill(ArrayList<Bill> billList) {
 		String output = "";
 
@@ -420,7 +632,7 @@ public class SchoolLunchApp {
 
 	}
 
-	//Submenu for bill
+	// Submenu for bill
 	private static void billMenu() {
 		// TODO Auto-generated method stub
 		System.out.println("1. Create Bills");

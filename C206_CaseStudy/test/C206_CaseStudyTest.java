@@ -10,12 +10,14 @@ public class C206_CaseStudyTest {
 	private Order order1;
 	private Order order2;
 	
+	
 	private ArrayList<Order> orderList;
 
 	@Before
 	public void setUp() throws Exception {
 		order1 = new Order("19002451", "11/06/2020", new ArrayList<MenuItem>());
 		order2 = new Order("19036051", "20/08/2020", new ArrayList<MenuItem>());
+		
 	}
 
 	@After
