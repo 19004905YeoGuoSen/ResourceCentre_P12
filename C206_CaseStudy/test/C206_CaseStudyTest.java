@@ -9,19 +9,27 @@ import org.junit.Test;
 public class C206_CaseStudyTest {
 	private Order order1;
 	private Order order2;
+	private MenuItem menuItem1;
+	private MenuItem menuItem2;
 	
 	
 	private ArrayList<Order> orderList;
+	private ArrayList<MenuItem> menuItemList;
 
 	@Before
 	public void setUp() throws Exception {
 		order1 = new Order("19002451", "11/06/2020", new ArrayList<MenuItem>());
 		order2 = new Order("19036051", "20/08/2020", new ArrayList<MenuItem>());
-		
+		menuItem1 = new MenuItem ("Japanese", "Sushi", true, 5.5);
+		menuItem2 = new MenuItem ("Western", "Steak", false, 15);
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		order1 = null;
+		order2 = null;
+		menuItem1 = null;
+		menuItem2 = null;
 	}
 
 	@Test
@@ -72,11 +80,35 @@ public class C206_CaseStudyTest {
 //		Boolean ok = SchoolLunchApp.deleteAllOrder(orderList, "19002451");
 //	}
 	
+	//===============================================MenuItem=============================================================
 	
+	public void addAllMenuItemTest() {
+		assertNotNull("Check if there is valid MenuItem arraylist to add to", menuItemList);
+		
+		SchoolLunchApp.addMenuItem(menuItemList, menuItem1);
+		assertEquals("Check that MenuItem arraylist size is 1", 1, menuItemList.size());
+		assertSame("Check that MenuItem is added", menuItem1, menuItemList.get(0));
+		
+		SchoolLunchApp.addMenuItem(menuItemList, menuItem2);
+		assertEquals("Check that MenuItem arraylist size is 2", 2, menuItemList.size());
+		assertSame("Check that MenuItem is added", menuItem2, menuItemList.get(1));
+		
+	}
 	
-	
-	
-	
+	public void deleteMenuItemTest() {
+		assertNotNull("Test if there is valid MenuItem arraylist to retrieve item from", menuItemList);
+		SchoolLunchApp.addMenuItem(menuItemList, menuItem1);
+		SchoolLunchApp.addMenuItem(menuItemList, menuItem2);
+		
+		assertEquals("Check that MenuItem arraylist size is 2", 2, menuItemList.size());
+		
+		SchoolLunchApp.deleteMenuItem(menuItemList, menuItem1);
+		assertEquals("Check that MenuItem arraylist size is 1", 1, menuItemList.size());
+		assertSame("Check that MenuItem1 is removed", menuItem2, menuItemList.get(0));
+		
+		SchoolLunchApp.deleteMenuItem(menuItemList, menuItem2);
+		assertEquals("Check that MenuItem arraylist size is 0", 0, menuItemList.size());
+	}
 	
 	
 	
