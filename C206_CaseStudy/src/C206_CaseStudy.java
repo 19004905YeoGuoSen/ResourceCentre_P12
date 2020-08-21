@@ -167,15 +167,14 @@ public class C206_CaseStudy {
 	private static void searchOrder(ArrayList<Order> orderList) {
 		String SearchId = Helper.readString("Enter studetn id to search > ");
 		boolean isIdFound = false;
-		
+			
 		String output = String.format("%-15s %-20s %-30s\n", "STUDENT ID", "ORDER DATE", "ITEMS");
-		
+			
 		for (int i = 0; i < orderList.size(); i++) {
 			if(orderList.get(i).getStudentId().contains(SearchId)) {
 				output += String.format("%-15s %-20s %-30s\n", orderList.get(i).getStudentId(), orderList.get(i).getOrderDate(), orderList.get(i).getItems());
 				isIdFound = true;
-			}
-			
+			}	
 		}
 		if(isIdFound = true) {
 			System.out.println(output);
