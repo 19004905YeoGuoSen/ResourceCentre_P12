@@ -79,7 +79,7 @@ public class C206_CaseStudy {
 	
 	public static void addAllOrder(ArrayList<Order> orderList,  Order order1) {
 		orderList.add(order1);
-		System.out.println("Order added");
+		System.out.println("New order added");
 	}
 
 	//=============================================deleteAllOrder====================================
@@ -136,20 +136,31 @@ public class C206_CaseStudy {
 	
 	//=============================================updateAllOrder====================================
 	private static void updateAllOrder(ArrayList<Order> orderList) {
-		String orderdate = Helper.readString("Enter Order Date to update > ");
+		String studentid = Helper.readString("Enter Student ID > ");
 		
 		boolean isUpdated = false;
 		
 		for(int i = 0; i < orderList.size(); i++) {
-			if(orderList.get(i).getOrderDate() == orderdate) {
-				String neworderdate = Helper.readString("Enter new order date > ");
-				orderList.get(i).setOrderDate(neworderdate);
-				System.out.println("***Order date updated");
-			}
-			if (isUpdated == false) {
-				System.out.println("***Invalid order date");
-			}
+			if(studentid.equalsIgnoreCase(orderList.get(i).getStudentId())) {
+				String orderdate = Helper.readString("Enter order date to update > ");
+				
+				if(orderdate.equals(orderList.get(i).getOrderDate())) {
+					String neworderdate = Helper.readString("Enter new order date > ");
+					orderList.get(i).setOrderDate(neworderdate);
+					System.out.println("Order date updated");
+				} else {
+					System.out.println("The order date is incorrect");
+				}
+				isUpdated = true;
+				break;
+			} 
+				
 		}
+		
+		if (isUpdated == false) {
+			System.out.println("***Invalid order date");
+		}
+		
 	}
 	
 	//=============================================searchOrder====================================
