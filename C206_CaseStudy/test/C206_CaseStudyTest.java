@@ -14,6 +14,8 @@ public class C206_CaseStudyTest {
 
 	@Before
 	public void setUp() throws Exception {
+		order1 = new Order("19002451", "11/06/2020", new ArrayList<MenuItem>());
+		order2 = new Order("19036051", "20/08/2020", new ArrayList<MenuItem>());
 	}
 
 	@After
@@ -28,22 +30,21 @@ public class C206_CaseStudyTest {
 	
 	//===============================================Order=============================================================
 	public void addAllOrderTest() {
-		//Item list is not null, so that can add a new order 
-		assertNotNull("Test if ther is valid order arrylist to add to", orderList);
+		//Order list is not null
+		assertNotNull("Check if there is valid order arrylist to add to", orderList);
 		
-		//Given an empty list, after adding 1 item, the size of the list is 1
+		//After adding 1 item, the item stored in the list is the same as the item being added
 		SchoolLunchApp.addAllOrder(orderList, order1);
-		assertEquals("Test if that Order arrayList size is 1?", 1, orderList.size());
+		assertEquals("Check if the Order arrayList size is 1?", 1, orderList.size());
+		assertSame("Check that the order is added", order1, orderList.get(0));
 		
-		//The item just added is same as the first item of the list
-		assertSame("test that Order is added same as 1st item of the list?", order1, orderList.get(0));
-		
-		//Add another item. Test that the size of the list is 2? 
+		//After adding another item. the arraylist size is 2 and the second item in the list is the item added 
 		SchoolLunchApp.addAllOrder(orderList, order2);
 		assertEquals("Test that Order arrayList size is 2?", 2, orderList.size());
+		assertSame("Check that the order is added", order2, orderList.get(1));
 	}
 	
-	public void retrieveAllOrderTest() {
+	public void viewAllOrderTest() {
 		// Test if Item list is not null but empty, so that can add a new order
 		assertNotNull("Test if there is valid Order arraylist to add to", orderList);
 		
@@ -60,9 +61,24 @@ public class C206_CaseStudyTest {
 		//test if the expected output string same as the list of order retrieved from the SourceCentre
 		allOrder= SchoolLunchApp.retrieveAllOrder(orderList);
 		
-		testOutput = String.format("%-15s %-20s %-30s\n", "Order001", "11/06/2020", new ArrayList<MenuItem>());
+		testOutput = String.format("%-15s %-20s %-30s\n", "19002451", "11/06/2020", new ArrayList<MenuItem>());
 		
 		assertEquals("Check that ViewAllOrderList", testOutput, allOrder);
 	}
-
+	
+//	public void updateAllOrderTest() {
+//		Boolean ok = SchoolLunchApp.deleteAllOrder(orderList, "19002451");
+//	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
