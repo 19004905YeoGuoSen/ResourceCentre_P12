@@ -24,6 +24,10 @@ public class SchoolLunchApp {
 					addAllOrder(orderList, order1);
 				} else if (orders == 3) {
 					deleteAllOrder(orderList);
+				} else if (orders == 4) {
+					updateAllOrder(orderList);
+				} else if(orders == 5) {
+					
 				}
 
 			} else if (option == 3) {
@@ -122,7 +126,7 @@ public class SchoolLunchApp {
 		
 	public static void addAllOrder(ArrayList<Order> orderList,  Order order1) {
 		orderList.add(order1);
-		System.out.println("Order added");
+		System.out.println("New Order added");
 	}
 
 	//=============================================deleteAllOrder==========================================================
@@ -133,27 +137,52 @@ public class SchoolLunchApp {
 			
 		int num = Helper.readInt("Enter option to search > ");
 			
-		ArrayList<Order> find = new ArrayList<Order>(); 
+		ArrayList<Order> findList = new ArrayList<Order>(); 
 			
 		if (num == 1) {
 			String studentid = Helper.readString("Enter Student ID > ");
 			for (Order od : orderList) {
 				if (od.getStudentId().equalsIgnoreCase(studentid)) {
-					find.add(od);
+					findList.add(od);
 				}
 			}
 		} else if (num == 2) {
 			String orderdate = Helper.readString("Enter order date > ");
 			for (Order od : orderList) {
 				if (od.getOrderDate().equalsIgnoreCase(orderdate)) {
-					find.add(od);
+					findList.add(od);
 				}
+			}
+		}
+		
+		if (findList.size() == 0) {
+			System.out.println("Nothing is found!");
+		} else {
+			System.out.println(
+					String.format("%-15s %-20s %-30s", "STUDENT ID", "ORDER DATE", "ITEMS"));
+			for (int i = 0; i < findList.size(); i++) {
+				System.out.println(String.format("%s", findList.get(i).toString()));
+			}
+
+			int choice = Helper.readInt("Enter the choice to delete > ");
+			if (choice <= 0 || choice > findList.size()) {
+				System.out.println("Invalid input!");
+			} else {
+				String studentid = findList.get(choice - 1).getStudentId();
+				String oderdate = findList.get(choice - 1).getOrderDate();
+
+				for (int x = 0; x < orderList.size(); x++) {
+					if (orderList.get(x).getStudentId().equals(studentid) && orderList.get(x).getOrderDate().equals(oderdate)); 
+						orderList.remove(x);
+				}
+
+				System.out.println("Order deleted");
 			}
 		}
 	}
 		
 	//=============================================updateAllOrder==========================================================
-	private static void updateAllOrder(ArrayList<Order> orderList) {
+	public static void updateAllOrder(ArrayList<Order> orderList) {
 		String orderdate = Helper.readString("Enter Order Date to update > ");
 			
 		boolean isUpdated = false;
@@ -163,6 +192,7 @@ public class SchoolLunchApp {
 				String neworderdate = Helper.readString("Enter new order date > ");
 				orderList.get(i).setOrderDate(neworderdate);
 				System.out.println("***Order date updated");
+				isUpdated = true;
 			}
 			if (isUpdated == false) {
 				System.out.println("***Invalid order date");
