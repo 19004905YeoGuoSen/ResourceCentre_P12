@@ -27,7 +27,7 @@ public class SchoolLunchApp {
 				} else if (orders == 4) {
 					updateAllOrder(orderList);
 				} else if(orders == 5) {
-					
+					searchOrder(orderList);
 				}
 
 			} else if (option == 3) {
@@ -210,7 +210,7 @@ public class SchoolLunchApp {
 		
 	}
 		
-	//=============================================searchOrder=============================================================
+	//=============================================searchOrder by student ID=============================================================
 	private static void searchOrder(ArrayList<Order> orderList) {
 		String SearchId = Helper.readString("Enter studetn id to search > ");
 		boolean isIdFound = false;
