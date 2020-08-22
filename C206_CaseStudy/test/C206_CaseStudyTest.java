@@ -95,6 +95,26 @@ public class C206_CaseStudyTest {
 		
 	}
 	
+	public void viewMenuItemOutputTest() {
+		assertNotNull("Test if there is valid MenuItem arraylist to retrieve item from", menuItemList);
+		
+		SchoolLunchApp.addMenuItem(menuItemList, menuItem1);
+		
+		String healthyChoicePrinter = "no";
+		if (menuItem1.isHealthyChoice())
+			healthyChoicePrinter = "yes";
+		String testOutput = String.format("%-20s %-30s %-15s %-10.2f", menuItem1.getCategory(), menuItem1.getName(), healthyChoicePrinter, menuItem1.getPrice());
+		assertEquals("Check that MenuItem arraylist first item output is the same", menuItemList.get(0).toString(), testOutput);
+		
+		SchoolLunchApp.addMenuItem(menuItemList, menuItem2);
+		
+		healthyChoicePrinter = "no";
+		if (menuItem2.isHealthyChoice())
+			healthyChoicePrinter = "yes";
+		testOutput = String.format("%-20s %-30s %-15s %-10.2f", menuItem2.getCategory(), menuItem2.getName(), healthyChoicePrinter, menuItem2.getPrice());
+		assertEquals("Check that MenuItem arraylist second item output is the same", menuItemList.get(1).toString(), testOutput);
+	}
+	
 	public void deleteMenuItemTest() {
 		assertNotNull("Test if there is valid MenuItem arraylist to retrieve item from", menuItemList);
 		SchoolLunchApp.addMenuItem(menuItemList, menuItem1);
