@@ -100,6 +100,7 @@ public class SchoolLunchApp {
 	// =============================================ViewAllOrder============================================================
 	private static void viewAllOrder(ArrayList<Order> orderList) {
 		// TODO Auto-generated method stub
+		Helper.line(80, "-");
 		System.out.println("VIEW ALL ORDERS");
 		Helper.line(80, "-");
 		String output = String.format("%-15s %-20s %-30s\n", "STUDENT ID", "ORDER DATE", "ITEMS");
@@ -119,8 +120,10 @@ public class SchoolLunchApp {
 
 	// =============================================addAllOrder==============================================================
 	public static Order inputOrder() {
+		Helper.line(80, "-");
 		System.out.println("ADD ORDER");
 		Helper.line(80, "-");
+		
 		String studentid = Helper.readString("Enter Student ID > ");
 		String orderdate = Helper.readString("Enter Order Date > ");
 		ArrayList<MenuItem> items = new ArrayList<MenuItem>();
@@ -138,8 +141,10 @@ public class SchoolLunchApp {
 	// =============================================deleteAllOrder==========================================================
 	private static void deleteAllOrder(ArrayList<Order> orderList) {
 		// TODO Auto-generated method stub
+		Helper.line(80, "-");
 		System.out.println("DELETE ORDER");
 		Helper.line(80, "-");
+		
 		System.out.println("1. Student ID");
 		System.out.println("2. Order Date");
 
@@ -192,6 +197,7 @@ public class SchoolLunchApp {
 
 	// =============================================updateAllOrder==========================================================
 	private static void updateAllOrder(ArrayList<Order> orderList) {
+		Helper.line(80, "-");
 		System.out.println("UPDATE ORDERS");
 		Helper.line(80, "-");
 
@@ -224,6 +230,7 @@ public class SchoolLunchApp {
 
 	// =========================search order by student ID=============================================================
 	private static void searchOrderByStudentID(ArrayList<Order> orderList) {
+		Helper.line(80, "-");
 		System.out.println("SEARCH ORDERS BY STUDENT ID");
 		Helper.line(80, "-");
 
