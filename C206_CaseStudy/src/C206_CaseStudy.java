@@ -26,9 +26,9 @@ public class C206_CaseStudy {
 				} else if (orders == 3) {
 					deleteAllOrder(orderList);
 				} else if (orders == 4) {
-					updateAllOrder(orderList);
+					updateAllOrder(orderList, null);
 				} else if (orders == 5) {
-					searchOrderByStudentID(orderList);
+					searchOrderByStudentID(orderList, null);
 				}
 
 			} else if (option == 3) {
@@ -51,15 +51,18 @@ public class C206_CaseStudy {
 	//=============================================ViewAllOrder====================================
 	private static void viewAllOrder(ArrayList<Order> orderList) {
 		// TODO Auto-generated method stub
+		Helper.line(80, "-");
+		System.out.println("VIEW ALL ORDERS");
+		Helper.line(80, "-");
 		String output = String.format("%-15s %-20s %-30s\n", "STUDENT ID", "ORDER DATE", "ITEMS");
-		
+
 		output += retrieveAllOrder(orderList);
 		System.out.println(output);
 	}
-	
-	public static String retrieveAllOrder (ArrayList<Order> orderList) {
+
+	public static String retrieveAllOrder(ArrayList<Order> orderList) {
 		String output = "";
-		
+
 		for (int i = 0; i < orderList.size(); i++) {
 			output += String.format("%-84s\n", orderList.get(i).toString());
 		}
@@ -68,30 +71,38 @@ public class C206_CaseStudy {
 	
 	//=============================================addAllOrder====================================
 	public static Order inputOrder() {
-		String studentid = Helper.readString("Enter Student ID > ");	
+		Helper.line(80, "-");
+		System.out.println("ADD ORDER");
+		Helper.line(80, "-");
+
+		String studentid = Helper.readString("Enter Student ID > ");
 		String orderdate = Helper.readString("Enter Order Date > ");
 		ArrayList<MenuItem> items = new ArrayList<MenuItem>();
 
-		Order order1= new Order(studentid, orderdate, items);
+		Order order1 = new Order(studentid, orderdate, items);
 		return order1;
-		
+
 	}
-	
-	public static void addAllOrder(ArrayList<Order> orderList,  Order order1) {
+
+	public static void addAllOrder(ArrayList<Order> orderList, Order order1) {
 		orderList.add(order1);
-		System.out.println("New order added");
+		System.out.println("New Order added");
 	}
 
 	//=============================================deleteAllOrder====================================
 	private static void deleteAllOrder(ArrayList<Order> orderList) {
 		// TODO Auto-generated method stub
+		Helper.line(80, "-");
+		System.out.println("DELETE ORDER");
+		Helper.line(80, "-");
+
 		System.out.println("1. Student ID");
 		System.out.println("2. Order Date");
-			
+
 		int num = Helper.readInt("Enter option to search > ");
-			
-		ArrayList<Order> findList = new ArrayList<Order>(); 
-			
+
+		ArrayList<Order> findList = new ArrayList<Order>();
+
 		if (num == 1) {
 			String studentid = Helper.readString("Enter Student ID > ");
 			for (Order od : orderList) {
@@ -107,12 +118,11 @@ public class C206_CaseStudy {
 				}
 			}
 		}
-		
+
 		if (findList.size() == 0) {
 			System.out.println("Nothing is found!");
 		} else {
-			System.out.println(
-					String.format("%-15s %-20s %-30s", "STUDENT ID", "ORDER DATE", "ITEMS"));
+			System.out.println(String.format("%-15s %-20s %-30s", "STUDENT ID", "ORDER DATE", "ITEMS"));
 			for (int i = 0; i < findList.size(); i++) {
 				System.out.println(String.format("%s", findList.get(i).toString()));
 			}
@@ -125,8 +135,10 @@ public class C206_CaseStudy {
 				String oderdate = findList.get(choice - 1).getOrderDate();
 
 				for (int x = 0; x < orderList.size(); x++) {
-					if (orderList.get(x).getStudentId().equals(studentid) && orderList.get(x).getOrderDate().equals(oderdate)); 
-						orderList.remove(x);
+					if (orderList.get(x).getStudentId().equals(studentid)
+							&& orderList.get(x).getOrderDate().equals(oderdate))
+						;
+					orderList.remove(x);
 				}
 
 				System.out.println("Order deleted");
@@ -135,16 +147,20 @@ public class C206_CaseStudy {
 	}
 	
 	//=============================================updateAllOrder====================================
-	private static void updateAllOrder(ArrayList<Order> orderList) {
+	static void updateAllOrder(ArrayList<Order> orderList, Order order1) {
+		Helper.line(80, "-");
+		System.out.println("UPDATE ORDERS");
+		Helper.line(80, "-");
+
 		String studentid = Helper.readString("Enter Student ID > ");
-		
+
 		boolean isUpdated = false;
-		
-		for(int i = 0; i < orderList.size(); i++) {
-			if(studentid.equalsIgnoreCase(orderList.get(i).getStudentId())) {
+
+		for (int i = 0; i < orderList.size(); i++) {
+			if (studentid.equalsIgnoreCase(orderList.get(i).getStudentId())) {
 				String orderdate = Helper.readString("Enter order date to update > ");
-				
-				if(orderdate.equals(orderList.get(i).getOrderDate())) {
+
+				if (orderdate.equals(orderList.get(i).getOrderDate())) {
 					String neworderdate = Helper.readString("Enter new order date > ");
 					orderList.get(i).setOrderDate(neworderdate);
 					System.out.println("Order date updated");
@@ -153,30 +169,35 @@ public class C206_CaseStudy {
 				}
 				isUpdated = true;
 				break;
-			} 
-				
+			}
+
 		}
-		
+
 		if (isUpdated == false) {
-			System.out.println("***Invalid order date");
+			System.out.println("***Invalid input");
 		}
-		
+
 	}
 	
 	//=============================================searchOrder====================================
-	private static void searchOrderByStudentID(ArrayList<Order> orderList) {
+	static void searchOrderByStudentID(ArrayList<Order> orderList, Order order1) {
+		Helper.line(80, "-");
+		System.out.println("SEARCH ORDERS BY STUDENT ID");
+		Helper.line(80, "-");
+
 		String SearchId = Helper.readString("Enter studetn id to search > ");
 		boolean isIdFound = false;
-			
+
 		String output = String.format("%-15s %-20s %-30s\n", "STUDENT ID", "ORDER DATE", "ITEMS");
-			
+
 		for (int i = 0; i < orderList.size(); i++) {
-			if(orderList.get(i).getStudentId().contains(SearchId)) {
-				output += String.format("%-15s %-20s %-30s\n", orderList.get(i).getStudentId(), orderList.get(i).getOrderDate(), orderList.get(i).getItems());
+			if (orderList.get(i).getStudentId().contains(SearchId)) {
+				output += String.format("%-15s %-20s %-30s\n", orderList.get(i).getStudentId(),
+						orderList.get(i).getOrderDate(), orderList.get(i).getItems());
 				isIdFound = true;
-			}	
+			}
 		}
-		if(isIdFound = true) {
+		if (isIdFound = true) {
 			System.out.println(output);
 		} else {
 			System.out.println("The order date does not exists");
