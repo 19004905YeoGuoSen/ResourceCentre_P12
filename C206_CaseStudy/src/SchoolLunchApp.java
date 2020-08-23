@@ -231,10 +231,8 @@ public class SchoolLunchApp {
 
 	}
 
-	// =========================search order by student
-	// ID=============================================================
-	// =========================search order by student
-	// ID=============================================================
+	// ===========================search order by student ID====================================
+
 	private static void searchOrderByStudentID(ArrayList<Order> orderList) {
 		Helper.line(80, "-");
 		System.out.println("SEARCH ORDERS BY STUDENT ID");
