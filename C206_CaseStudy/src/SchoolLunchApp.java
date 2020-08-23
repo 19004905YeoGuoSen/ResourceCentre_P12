@@ -27,7 +27,7 @@ public class SchoolLunchApp {
 				} else if (orders == 4) {
 					updateAllOrder(orderList, null);
 				} else if (orders == 5) {
-					searchOrderByStudentID(orderList);
+					searchOrderByStudentID(orderList, null);
 				}
 
 			} else if (option == 3) {
@@ -199,7 +199,7 @@ public class SchoolLunchApp {
 	}
 
 	// =============================================updateAllOrder==========================================================
-	private static void updateAllOrder(ArrayList<Order> orderList, Order order1) {
+	static void updateAllOrder(ArrayList<Order> orderList, Order order1) {
 		Helper.line(80, "-");
 		System.out.println("UPDATE ORDERS");
 		Helper.line(80, "-");
@@ -233,7 +233,7 @@ public class SchoolLunchApp {
 
 	// ===========================search order by student ID====================================
 
-	private static void searchOrderByStudentID(ArrayList<Order> orderList) {
+	static void searchOrderByStudentID(ArrayList<Order> orderList, Order order1) {
 		Helper.line(80, "-");
 		System.out.println("SEARCH ORDERS BY STUDENT ID");
 		Helper.line(80, "-");
@@ -264,7 +264,7 @@ public class SchoolLunchApp {
 		System.out.println("2. Add orders");
 		System.out.println("3. Delete orders");
 		System.out.println("4. Update orders");
-		System.out.println("5. Search orders by student ID");
+		System.out.println("5. Search orders by student ID"); 
 	}
 
 	// ===================================================viewAllMenuItem===================================================
