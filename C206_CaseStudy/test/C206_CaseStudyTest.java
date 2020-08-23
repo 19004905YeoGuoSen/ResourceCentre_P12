@@ -80,6 +80,20 @@ public class C206_CaseStudyTest {
 //		Boolean ok = SchoolLunchApp.deleteAllOrder(orderList, "19002451");
 //	}
 	
+	public void deleteOrderTest() {
+		//Test that the list is not empty
+		assertNotNull("Check if there is a orderList to retrieve items", orderList);
+		
+		//Test that 2 items can be removed and the arraylist is empty
+		SchoolLunchApp.addAllOrder(orderList, order1);
+		SchoolLunchApp.addAllOrder(orderList, order2);
+		assertEquals("Check that the size of orderList is 2", 2, orderList.size());
+		orderList.remove(1);
+		assertEquals("Check that the size of orderList is 1", 1, orderList.size());
+		orderList.remove(0);
+		assertEquals("Check that the size of orderList is 0", 0, orderList.size());
+	}
+	
 	//===============================================MenuItem=============================================================
 	
 	public void addAllMenuItemTest() {
