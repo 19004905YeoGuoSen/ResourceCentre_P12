@@ -105,6 +105,21 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that the size of orderList is 0", 0, orderList.size());
 	}
 	
+	public void searchbyStudentIDTest() {
+		//Order list is not null
+		assertNotNull("Check if there is valid order arraylist to search", orderList);
+		
+		//After searching 1 order, the order stored in the is the same as order being searched 
+		SchoolLunchApp.searchOrderByStudentID(orderList, order1);
+		assertEquals("Check if the order arrayList size is 1", 1, orderList.size());
+		assertSame("Check that the order is searched", order1, orderList.get(0));
+		
+		//After searching another order, the arraylist size is 2 and the second order in the list is the order searched 
+		SchoolLunchApp.searchOrderByStudentID(orderList, order2);
+		assertEquals("Check if the order arrayList size is 2", 2, orderList.size());
+		assertSame("Check that the order is searched", order2, orderList.get(1));
+	}
+	
 	//===============================================MenuItem=============================================================
 	
 	public void addAllMenuItemTest() {
