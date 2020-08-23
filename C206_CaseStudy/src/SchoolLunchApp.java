@@ -41,10 +41,10 @@ public class SchoolLunchApp {
 				else if (menuChoice == 3) {
 					MenuItem menuItemChoice = narrowingMenuItemList(menuItemList);
 					deleteMenuItem(menuItemList, menuItemChoice);
-				}else if (menuChoice == 4) {
+				} else if (menuChoice == 4) {
 					MenuItem menuItemChoice = narrowingMenuItemList(menuItemList);
 					updateMenuItem(menuItemList, menuItemChoice);
-				}else if (menuChoice == 5)
+				} else if (menuChoice == 5)
 					findMenuItem(menuItemList);
 				else
 					System.out.println("Invalid Input!");
@@ -125,11 +125,7 @@ public class SchoolLunchApp {
 		Helper.line(80, "-");
 		System.out.println("ADD ORDER");
 		Helper.line(80, "-");
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> branch 'master' of https://github.com/19004905YeoGuoSen/ResourceCentre_P12.git
 		String studentid = Helper.readString("Enter Student ID > ");
 		String orderdate = Helper.readString("Enter Order Date > ");
 		ArrayList<MenuItem> items = new ArrayList<MenuItem>();
@@ -150,11 +146,7 @@ public class SchoolLunchApp {
 		Helper.line(80, "-");
 		System.out.println("DELETE ORDER");
 		Helper.line(80, "-");
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> branch 'master' of https://github.com/19004905YeoGuoSen/ResourceCentre_P12.git
 		System.out.println("1. Student ID");
 		System.out.println("2. Order Date");
 
@@ -238,12 +230,10 @@ public class SchoolLunchApp {
 
 	}
 
-<<<<<<< HEAD
 	// =========================search order by student
 	// ID=============================================================
-=======
-	// =========================search order by student ID=============================================================
->>>>>>> branch 'master' of https://github.com/19004905YeoGuoSen/ResourceCentre_P12.git
+	// =========================search order by student
+	// ID=============================================================
 	private static void searchOrderByStudentID(ArrayList<Order> orderList) {
 		Helper.line(80, "-");
 		System.out.println("SEARCH ORDERS BY STUDENT ID");
@@ -363,7 +353,7 @@ public class SchoolLunchApp {
 
 		System.out.println(name + " is removed!");
 	}
-	
+
 	private static MenuItem narrowingMenuItemList(ArrayList<MenuItem> menuItemList) {
 		System.out.println("1. Category");
 		System.out.println("2. Name");
