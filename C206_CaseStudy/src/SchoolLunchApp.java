@@ -36,9 +36,10 @@ public class SchoolLunchApp {
 
 				if (menuChoice == 1)
 					viewAllMenuItem(menuItemList);
-				else if (menuChoice == 2)
-					addMenuItem(menuItemList);
-				else if (menuChoice == 3) {
+				else if (menuChoice == 2) {
+					MenuItem newItem = createNewMenuItem();
+					addMenuItem(menuItemList, newItem);
+				}else if (menuChoice == 3) {
 					MenuItem menuItemChoice = narrowingMenuItemList(menuItemList);
 					deleteMenuItem(menuItemList, menuItemChoice);
 				} else if (menuChoice == 4) {
@@ -309,8 +310,7 @@ public class SchoolLunchApp {
 	}
 
 	// ===================================================addMenuItem=======================================================
-	private static void addMenuItem(ArrayList<MenuItem> menuItemList) {
-		// TODO Auto-generated method stub
+	private static MenuItem createNewMenuItem() {
 		String category = Helper.readString("Enter Menu Item category > ");
 		String name = Helper.readString("Enter Menu Item name > ");
 		boolean acceptedAns = false;
@@ -333,12 +333,17 @@ public class SchoolLunchApp {
 			if (price <= 0)
 				System.out.println("Please enter a value more than 0!");
 		}
-		menuItemList.add(new MenuItem(category, name, healthyChoice, price));
+		return new MenuItem(category, name, healthyChoice, price);
+	}
+
+	static void addMenuItem(ArrayList<MenuItem> menuItemList, MenuItem m) {
+		// TODO Auto-generated method stub
+		menuItemList.add(m);
 		System.out.println("New menu item added!");
 	}
 
 	// ===================================================deleteMenuItem====================================================
-	private static void deleteMenuItem(ArrayList<MenuItem> menuItemList, MenuItem m) {
+	static void deleteMenuItem(ArrayList<MenuItem> menuItemList, MenuItem m) {
 		String name = m.getName();
 		String category = m.getCategory();
 		boolean healthyChoice = m.isHealthyChoice();
