@@ -43,12 +43,12 @@ public class C206_CaseStudyTest {
 		//Order list is not null
 		assertNotNull("Check if there is valid order arrylist to add to", orderList);
 		
-		//After adding 1 item, the item stored in the list is the same as the item being added
+		//After adding 1 order, the order stored in the list is the same as the order being added
 		SchoolLunchApp.addAllOrder(orderList, order1);
 		assertEquals("Check if the Order arrayList size is 1?", 1, orderList.size());
 		assertSame("Check that the order is added", order1, orderList.get(0));
 		
-		//After adding another item. the arraylist size is 2 and the second item in the list is the item added 
+		//After adding another order. the arraylist size is 2 and the second order in the list is the order added 
 		SchoolLunchApp.addAllOrder(orderList, order2);
 		assertEquals("Test that Order arrayList size is 2?", 2, orderList.size());
 		assertSame("Check that the order is added", order2, orderList.get(1));
@@ -68,7 +68,7 @@ public class C206_CaseStudyTest {
 		SchoolLunchApp.addAllOrder(orderList, order2);
 		assertEquals("Test if that Order arraylist size is 2?", 2, orderList.size());
 		
-		//test if the expected output string same as the list of order retrieved from the SourceCentre
+		//Test if the expected output string same as the list of order retrieved from the SourceCentre
 		allOrder= SchoolLunchApp.retrieveAllOrder(orderList);
 		
 		testOutput = String.format("%-15s %-20s %-30s\n", "19002451", "11/06/2020", new ArrayList<MenuItem>());
@@ -76,9 +76,20 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that ViewAllOrderList", testOutput, allOrder);
 	}
 	
-//	public void updateAllOrderTest() {
-//		Boolean ok = SchoolLunchApp.deleteAllOrder(orderList, "19002451");
-//	}
+	public void updateAllOrderTest() {
+		//Order list is not null
+		assertNotNull("Check of there is valid order arraylist to add to", orderList);
+		
+		//After updating 1 order, the order stored in the list is the same as the order being updated
+		SchoolLunchApp.updateAllOrder(orderList, order1);
+		assertEquals("Check if the order arrayList is 1?", 1, orderList.size());
+		assertSame("Check that the order is updated", order1, orderList.get(0));
+		
+		//After updating another order. the arraylist size is 2 and the second order in the list is the order updated 
+		SchoolLunchApp.updateAllOrder(orderList, order2);
+		assertEquals("Check if the order arrayList size is 2", 2, orderList.size());
+		assertSame("Check that the order is updated", order2, orderList.get(1));
+	}
 	
 	public void deleteOrderTest() {
 		//Test that the list is not empty
