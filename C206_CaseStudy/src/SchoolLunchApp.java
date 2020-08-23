@@ -25,7 +25,7 @@ public class SchoolLunchApp {
 				} else if (orders == 3) {
 					deleteAllOrder(orderList);
 				} else if (orders == 4) {
-					updateAllOrder(orderList);
+					updateAllOrder(orderList, null);
 				} else if (orders == 5) {
 					searchOrderByStudentID(orderList);
 				}
@@ -199,7 +199,7 @@ public class SchoolLunchApp {
 	}
 
 	// =============================================updateAllOrder==========================================================
-	private static void updateAllOrder(ArrayList<Order> orderList) {
+	private static void updateAllOrder(ArrayList<Order> orderList, Order order1) {
 		Helper.line(80, "-");
 		System.out.println("UPDATE ORDERS");
 		Helper.line(80, "-");
@@ -226,7 +226,7 @@ public class SchoolLunchApp {
 		}
 
 		if (isUpdated == false) {
-			System.out.println("***Invalid order date");
+			System.out.println("***Invalid input");
 		}
 
 	}
