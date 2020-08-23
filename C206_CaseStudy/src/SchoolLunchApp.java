@@ -125,7 +125,11 @@ public class SchoolLunchApp {
 		Helper.line(80, "-");
 		System.out.println("ADD ORDER");
 		Helper.line(80, "-");
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> branch 'master' of https://github.com/19004905YeoGuoSen/ResourceCentre_P12.git
 		String studentid = Helper.readString("Enter Student ID > ");
 		String orderdate = Helper.readString("Enter Order Date > ");
 		ArrayList<MenuItem> items = new ArrayList<MenuItem>();
@@ -146,7 +150,11 @@ public class SchoolLunchApp {
 		Helper.line(80, "-");
 		System.out.println("DELETE ORDER");
 		Helper.line(80, "-");
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> branch 'master' of https://github.com/19004905YeoGuoSen/ResourceCentre_P12.git
 		System.out.println("1. Student ID");
 		System.out.println("2. Order Date");
 
@@ -230,8 +238,12 @@ public class SchoolLunchApp {
 
 	}
 
+<<<<<<< HEAD
 	// =========================search order by student
 	// ID=============================================================
+=======
+	// =========================search order by student ID=============================================================
+>>>>>>> branch 'master' of https://github.com/19004905YeoGuoSen/ResourceCentre_P12.git
 	private static void searchOrderByStudentID(ArrayList<Order> orderList) {
 		Helper.line(80, "-");
 		System.out.println("SEARCH ORDERS BY STUDENT ID");
