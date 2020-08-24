@@ -78,17 +78,29 @@ public class SchoolLunchApp {
 					Helper.line(20, "-");
 					SchoolLunchApp.ViewAllBill(billList);
 
-				} else if (option == 4)
-					// Update Bill
+			} else if (option == 4) {
+				 //Update Bill
 					Helper.line(20, "-");
-					System.out.println("UPDATE BILL");
+			System.out.println("UPDATE BILL");
+			Helper.line(20, "-");
+				SchoolLunchApp.updateBill(billList);
+				}
+			else if(option == 5){
 					Helper.line(20, "-");
-					SchoolLunchApp.updateBill(billList);
+					System.out.println("SEARCH PAYEE");
+					Helper.line(20, "-");
+					SchoolLunchApp.searchBillByPayee(billList);
 				}else {
-					System.out.println("Invalid option");
+					System.out.println("Invalid");
+				}
 			}
-
 		}
+	
+				
+				
+			
+
+		
 
 	}
 
@@ -601,6 +613,7 @@ public class SchoolLunchApp {
 		System.out.println("2. Delete Bills");
 		System.out.println("3. View All Bills");
 		System.out.println("4. Update Bill");
+		System.out.println("5. Search Bill By Payee");
 		Helper.line(80, "-");
 	}
 	
@@ -641,6 +654,28 @@ public class SchoolLunchApp {
 
 	}
 	
-// =======================================
+// =======================================Search bill by Payee======================================================================
+	static void searchBillByPayee(ArrayList<Bill> billList) {
+		Helper.line(80, "-");
+		System.out.println("SEARCH BILL BY PAYEE'S NAME");
+		Helper.line(80, "-");
+
+		String SearchPayee = Helper.readString("Enter payee's name to search > ");
+		boolean isNameFound = false;
+
+		String output = String.format("%-15s %-20s %-30s\n", "PAYEE NAME", "TOTAL AMOUNT", "DUE DATE");
+
+		for (int i = 0; i < billList.size(); i++) {
+			if (billList.get(i).getPayee().contains(SearchPayee)) {
+				output += String.format("%-15s %-20s %-30s\n", billList.get(i).getPayee(), billList.get(i).getTotalAmount(), billList.get(i).getDueDate());
+				isNameFound = true;
+			}
+		}
+		if (isNameFound = true) {
+			System.out.println(output);
+		} else {
+			System.out.println("Payee does not exist");
+		}
+	}
 
 }
