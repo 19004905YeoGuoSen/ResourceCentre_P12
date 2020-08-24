@@ -78,9 +78,14 @@ public class SchoolLunchApp {
 					Helper.line(20, "-");
 					SchoolLunchApp.ViewAllBill(billList);
 
-				} else {
-					System.out.println("Invalid Option");
-				}
+				} else if (option == 4)
+					// Update Bill
+					Helper.line(20, "-");
+					System.out.println("UPDATE BILL");
+					Helper.line(20, "-");
+					SchoolLunchApp.updateBill(billList);
+				}else {
+					System.out.println("Invalid option");
 			}
 
 		}
@@ -544,7 +549,6 @@ public class SchoolLunchApp {
 	// ===================================================DeleteBill=========================================================
 	static void deleteBill(ArrayList<Bill> billList, Bill b) {
 		String payee = b.getPayee();
-		double price = b.getTotalAmount();
 
 		for (int x = 0; x < billList.size(); x++) {
 			if (billList.get(x).getPayee().equals(payee))
@@ -596,7 +600,47 @@ public class SchoolLunchApp {
 		System.out.println("1. Create Bills");
 		System.out.println("2. Delete Bills");
 		System.out.println("3. View All Bills");
+		System.out.println("4. Update Bill");
 		Helper.line(80, "-");
 	}
+	
+	//================================================UpdateBill================================================================
+	static void updateBill(ArrayList<Bill> billList) {
+		boolean isUpdated = false;
+
+		for (int i = 0; i < billList.size(); i++) {
+				String payeeName = Helper.readString("Enter Payee's Name > ");
+				if (payeeName.equals(billList.get(i).getPayee())) {
+					String newName = Helper.readString("Enter New Payee's Name > ");
+					Double newAmount = Helper.readDouble("Enter New Amount > ");
+					String newDueDate = Helper.readString("Enter New Due Date > ");
+					billList.get(i).setPayee(newName);
+					billList.get(i).setTotalAmount(newAmount);
+					billList.get(i).setDueDate(newDueDate);
+
+					System.out.println("Bill Updated");
+				} else {
+					System.out.println("No such payee");
+				}
+				isUpdated = true;
+				break;
+			}
+
+
+		if (isUpdated == false) {
+			System.out.println("***Invalid input");
+		}
+
+	}
+	
+	public static void UpdateBill(ArrayList<Bill> billList) {
+		System.out.println("UPDATE BILL");
+		String output = String.format("%-10s %-30s %-10s\n", "PAYEE", "TOTAL AMOUNT", "DUE DATE");
+		output += retrieveAllBill(billList);
+		System.out.println(output);
+
+	}
+	
+// =======================================
 
 }
