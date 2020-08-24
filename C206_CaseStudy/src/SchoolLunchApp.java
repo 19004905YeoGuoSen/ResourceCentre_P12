@@ -542,7 +542,17 @@ public class SchoolLunchApp {
 	}
 
 	// ===================================================DeleteBill=========================================================
+	static void deleteBill(ArrayList<Bill> billList, Bill b) {
+		String payee = b.getPayee();
+		double price = b.getTotalAmount();
 
+		for (int x = 0; x < billList.size(); x++) {
+			if (billList.get(x).getPayee().equals(payee))
+				billList.remove(x);
+		}
+
+		System.out.println(payee + " is removed!");
+	}
 	// ===================================================AddBill===========================================================
 	public static Bill inputBill() {
 		String payee = Helper.readString("Enter Payee's name > ");
