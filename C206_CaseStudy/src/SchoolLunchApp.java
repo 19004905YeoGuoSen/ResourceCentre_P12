@@ -20,9 +20,9 @@ public class SchoolLunchApp {
 				if (orders == 1) {
 					viewAllOrder(orderList);
 				} else if (orders == 2) {
-					viewMenuItems();
-//					Order order1 = inputOrder();
-//					addAllOrder(orderList, order1);
+//					viewMenuItems();
+					Order order1 = inputOrder();
+					addAllOrder(orderList, order1);
 				} else if (orders == 3) {
 					deleteAllOrder(orderList);
 				} else if (orders == 4) {
@@ -140,24 +140,24 @@ public class SchoolLunchApp {
 	}
 
 	// =============================================addAllOrder==============================================================
-//	public static Order inputOrder() {
-//		Helper.line(80, "-");
-//		System.out.println("ADD ORDER");
-//		Helper.line(80, "-");
-//
-//		String studentid = Helper.readString("Enter Student ID > ");
-//		String orderdate = Helper.readString("Enter Order Date > ");
-//		ArrayList<MenuItem> items = new ArrayList<MenuItem>();
-//
-//		Order order1 = new Order(studentid, orderdate, items);
-//		return order1;
-//
-//	}
-//
-//	public static void addAllOrder(ArrayList<Order> orderList, Order order1) {
-//		orderList.add(order1);
-//		System.out.println("New Order added");
-//	}
+	public static Order inputOrder() {
+		Helper.line(80, "-");
+		System.out.println("ADD ORDER");
+		Helper.line(80, "-");
+
+		String studentid = Helper.readString("Enter Student ID > ");
+		String orderdate = Helper.readString("Enter Order Date > ");
+		ArrayList<MenuItem> items = new ArrayList<MenuItem>();
+
+		Order order1 = new Order(studentid, orderdate, items);
+		return order1;
+
+	}
+
+	public static void addAllOrder(ArrayList<Order> orderList, Order order1) {
+		orderList.add(order1);
+		System.out.println("New Order added");
+	}
 	
 	public static void viewMenuItems() {
 		Helper.line(80, "-");
