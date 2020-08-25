@@ -7,7 +7,8 @@ public class SchoolLunchApp {
 		ArrayList<MenuItem> menuItemList = new ArrayList<MenuItem>();
 		ArrayList<Order> orderList = new ArrayList<Order>();
 
-		billList.add(new Bill("John", 30, "July 1st"));
+		billList.add(new Bill("John", 30, "July 1st")); 
+		
 		int option = 0;
 		while (option != 5) {
 			menu();
@@ -172,8 +173,6 @@ public class SchoolLunchApp {
 	
 		
 	}
-	
-
 
 	// =============================================deleteAllOrder==========================================================	
 	private static void deleteAllOrder(ArrayList<Order> orderList) {
@@ -213,7 +212,7 @@ public class SchoolLunchApp {
 				System.out.println(String.format("%s", findList.get(i).toString()));
 			}
 
-			int choice = Helper.readInt("Enter the choice to delete > ");
+			int choice = Helper.readInt("Enter student id to delete > ");
 			if (choice <= 0 || choice > findList.size()) {
 				System.out.println("Invalid input!");
 			} else {
