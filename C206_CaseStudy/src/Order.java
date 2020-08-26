@@ -34,9 +34,9 @@ public class Order {
 		return items;
 	}
 
-//	public void setItems(ArrayList<MenuItem> items) {
-//		this.items = items;
-//	}
+	public void setItems(ArrayList<MenuItem> items) {
+		this.items = items;
+	}
 	
 	public void addItem(MenuItem item) {
 		items.add(item);
