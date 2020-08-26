@@ -145,34 +145,44 @@ public class SchoolLunchApp {
 		Helper.line(80, "-");
 		System.out.println("ADD ORDER");
 		Helper.line(80, "-");
-
+		
 		String studentid = Helper.readString("Enter Student ID > ");
 		String orderdate = Helper.readString("Enter Order Date > ");
 		ArrayList<MenuItem> items = new ArrayList<MenuItem>();
+		
+		//Add menu items
+		int totalMenuItem = Helper.readInt("How many menu items do you want to add > ");
+		
+		for (int i = 0; i < totalMenuItem; i++) {
+			String category = Helper.readString("Enter menuitem Category > ");
+			String name = Helper.readString("Enter menuitem name > ");
+	    	
+			boolean acceptedAns = false;
+	    	boolean healthyChoice = false;
+	    	while (!acceptedAns) {
+	    		char healthyChoiceReader = Helper.readChar("Is the Menu Item a healthy choice (y/n)> ");
+	    		if (Character.toLowerCase(healthyChoiceReader) == 'y'|| Character.toLowerCase(healthyChoiceReader) == 'n') {
+	    			acceptedAns = true;
+	    			if (Character.toLowerCase(healthyChoiceReader) == 'y') {
+	    				healthyChoice = true;
+	    			} else {
+	    				System.out.println("Invalid input!");
+	    			}	
+	    		} 
+	    	double price = Helper.readDouble("Enter Price >");
+	    	items.add(new MenuItem(category, name, healthyChoice, price));
+	    	}
 
+		}
 		Order order1 = new Order(studentid, orderdate, items);
 		return order1;
-
-	}
-
+	  }
+	
 	public static void addAllOrder(ArrayList<Order> orderList, Order order1) {
 		orderList.add(order1);
 		System.out.println("New Order added");
 	}
 	
-	public static void viewMenuItems() {
-		Helper.line(80, "-");
-		System.out.println("VIEW MENU ITEM");
-		Helper.line(80, "-");
-		System.out.println("1. Item 1");
-		System.out.println("2. Item 2");
-		System.out.println("3. Item 3");
-		
-		String items = Helper.readString("Choose items that you want > ");
-		
-	
-		
-	}
 
 	// =============================================deleteAllOrder==========================================================	
 	private static void deleteAllOrder(ArrayList<Order> orderList) {
