@@ -95,7 +95,7 @@ public class C206_CaseStudy {
 	    			if (Character.toLowerCase(healthyChoiceReader) == 'y') {
 	    				healthyChoice = true;
 	    			} else {
-	    				System.out.println("Invalid input!");
+	    				System.out.println("Invalid input!"); 
 	    			}	
 	    		} 
 	    	double price = Helper.readDouble("Enter Price >");
