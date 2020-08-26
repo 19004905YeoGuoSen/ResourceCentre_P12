@@ -154,8 +154,8 @@ public class SchoolLunchApp {
 		int totalMenuItem = Helper.readInt("How many menu items do you want to add > ");
 		
 		for (int i = 0; i < totalMenuItem; i++) {
-			String category = Helper.readString("Enter menuitem Category > ");
-			String name = Helper.readString("Enter menuitem name > ");
+			String category = Helper.readString("Enter menu item Category > ");
+			String name = Helper.readString("Enter menu item name > ");
 	    	
 			boolean acceptedAns = false;
 	    	boolean healthyChoice = false;
@@ -170,7 +170,7 @@ public class SchoolLunchApp {
 	    			}	
 	    		} 
 	    	double price = Helper.readDouble("Enter Price >");
-	    	items.add(new MenuItem(category, name, healthyChoice, price));
+	    	items.add(new MenuItem("Category: " + category, "Name: " + name, healthyChoice, price));
 	    	}
 
 		}
