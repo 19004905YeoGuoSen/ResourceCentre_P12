@@ -30,6 +30,8 @@ public class SchoolLunchApp {
 					updateAllOrder(orderList, null);
 				} else if (orders == 5) {
 					searchOrderByStudentID(orderList, null);
+				} else if (orders == 6) {
+//					displayTotalAmount(menuItemList);
 				}
 
 			} else if (option == 3) {
@@ -97,13 +99,6 @@ public class SchoolLunchApp {
 				}
 			}
 		}
-	
-				
-				
-			
-
-		
-
 	}
 
 	private static void menu() {
@@ -172,17 +167,38 @@ public class SchoolLunchApp {
 	    	double price = Helper.readDouble("Enter Price >");
 //	    	System.out.println(String.format("%-20s %-20s %-30s %-20s", "Category:" + category, "Name:" + name, "Healthy Choice:" + healthyChoice, "Price:" + price));
 //	    	items.add(new MenuItem(String.format("%-20s %-20s %-30s %-20s", "Category: " , "Name:", "HealthyChoice:" , "Price: $"), name, healthyChoice, price)); 
-	    	items.add(new MenuItem(category, name, healthyChoice, price));
+	    	items.add(new MenuItem("Category: " + category, "Name: " + name, healthyChoice, price));
 	    	}
 
 		}
 		Order order1 = new Order(studentid, orderdate, items);
+		
 		return order1;
 	  }
+	
 	
 	public static void addAllOrder(ArrayList<Order> orderList, Order order1) {
 		orderList.add(order1);
 		System.out.println("New Order added");
+	}
+	
+	public static void displayTotalAmount(ArrayList<MenuItem> menuItemList){
+
+		double amount = Helper.readDouble("Enter total amount > ");
+		
+		for (int i = 0; i < menuItemList.size(); i++) {
+			
+			if(menuItemList.get(i).getPrice() == amount) {
+				String output = String.format("Total amount: $.2f", menuItemList.get(i).getPrice());
+				System.out.println(output);
+			}
+			
+//			double sum = 0.0;
+//	    	sum = menuItemList.get(i).getPrice() + sum;
+//			String output = String.format("Total amount: $.2f", menuItemList.get(i).getPrice());
+//			System.out.println(output);
+		}
+		
 	}
 	
 
@@ -301,6 +317,15 @@ public class SchoolLunchApp {
 			System.out.println("Student ID not exists");
 		}
 	}
+	
+//	//=================================Display total amount=======================================
+//	public static void displayTotalAmount(ArrayList<Order> orderList) {
+//		
+//		for(int i = 0; i < orderList.size(); i++) {
+//			if()
+//		}
+//		
+//	}
 
 	// submenu for order
 	private static void order() {
@@ -310,6 +335,7 @@ public class SchoolLunchApp {
 		System.out.println("3. Delete orders");
 		System.out.println("4. Update orders");
 		System.out.println("5. Search orders by student ID"); 
+//		System.out.println("6. Display total amount"); 
 	}
 
 	// ===================================================viewAllMenuItem===================================================
