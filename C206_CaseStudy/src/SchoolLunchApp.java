@@ -281,7 +281,7 @@ public class SchoolLunchApp {
 		System.out.println("SEARCH ORDERS BY STUDENT ID");
 		Helper.line(80, "-");
 
-		String SearchId = Helper.readString("Enter studetn id to search > ");
+		String SearchId = Helper.readString("Enter student id to search > ");
 		boolean isIdFound = false;
 
 		String output = String.format("%-15s %-20s %-30s\n", "STUDENT ID", "ORDER DATE", "ITEMS");
@@ -296,7 +296,7 @@ public class SchoolLunchApp {
 		if (isIdFound = true) {
 			System.out.println(output);
 		} else {
-			System.out.println("The order date does not exists");
+			System.out.println("Student ID not exists");
 		}
 	}
 
