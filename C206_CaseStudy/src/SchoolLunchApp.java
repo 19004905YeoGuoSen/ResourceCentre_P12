@@ -170,7 +170,9 @@ public class SchoolLunchApp {
 	    			}	
 	    		} 
 	    	double price = Helper.readDouble("Enter Price >");
-	    	items.add(new MenuItem("Category: " + category, "Name: " + name, healthyChoice, price));
+//	    	System.out.println(String.format("%-20s %-20s %-30s %-20s", "Category:" + category, "Name:" + name, "Healthy Choice:" + healthyChoice, "Price:" + price));
+//	    	items.add(new MenuItem(String.format("%-20s %-20s %-30s %-20s", "Category: " , "Name:", "HealthyChoice:" , "Price: $"), name, healthyChoice, price)); 
+	    	items.add(new MenuItem(category, name, healthyChoice, price));
 	    	}
 
 		}
@@ -293,7 +295,7 @@ public class SchoolLunchApp {
 				isIdFound = true;
 			}
 		}
-		if (isIdFound = true) {
+		if (isIdFound = false) {
 			System.out.println(output);
 		} else {
 			System.out.println("Student ID not exists");
@@ -331,7 +333,7 @@ public class SchoolLunchApp {
 		System.out.println("Menu Item");
 		Helper.line(80, "-");
 		if (menuItemList.size() > 0)
-			System.out.println(String.format("%-20s %-30s %-15s %-10s", "Category", "Name", "Healthy Choice", "Price"));
+			System.out.println(String.format("%-20s %-20s %-30s %-20s", "Category", "Name", "Healthy Choice", "Price"));
 
 		ArrayList<MenuItem> tempMenuItemList = new ArrayList<MenuItem>();
 		for (MenuItem mi : menuItemList) {
