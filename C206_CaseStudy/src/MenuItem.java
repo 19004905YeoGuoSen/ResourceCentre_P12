@@ -7,6 +7,7 @@ public class MenuItem {
 	private double price;
 	
 	public MenuItem(String category, String name, boolean healthyChoice, double price) {
+		super();
 		this.category = category;
 		this.name = name;
 		this.healthyChoice = healthyChoice;
@@ -50,7 +51,7 @@ public class MenuItem {
 		if (healthyChoice) {
 			healthyChoicePrinter = "yes";
 		}
-		return String.format("%-20s %-30s %-15s $%-10.2f", category, name, healthyChoicePrinter, price);
+		return String.format("%-20s %-30s %-15s %-10.2f", category, name, healthyChoicePrinter, price);
 	}
 	
 	
