@@ -51,7 +51,7 @@ public class MenuItem {
 		if (healthyChoice) {
 			healthyChoicePrinter = "yes";
 		}
-		return String.format("%-20s %-30s %-15s %-10.2f", category, name, healthyChoicePrinter, price);
+		return String.format("%-20s %-20s %-30s %-20.2f", category, name, healthyChoicePrinter, price);
 	}
 	
 	
