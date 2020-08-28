@@ -165,6 +165,13 @@ public class SchoolLunchApp {
 	    			}	
 	    		} 
 	    	double price = Helper.readDouble("Enter Price >");
+	    	
+		    for (int x = 0; x < items.size(); x++) {
+		    	double amount = Helper.readDouble("Enter total amount > $");
+		    	String output = String.format("Total amount: $%.2f", price + price);
+				System.out.println(output);
+		    }
+	    	
 //	    	System.out.println(String.format("%-20s %-20s %-30s %-20s", "Category:" + category, "Name:" + name, "Healthy Choice:" + healthyChoice, "Price:" + price));
 //	    	items.add(new MenuItem(String.format("%-20s %-20s %-30s %-20s", "Category: " , "Name:", "HealthyChoice:" , "Price: $"), name, healthyChoice, price)); 
 	    	items.add(new MenuItem("Category: " + category, "Name: " + name, healthyChoice, price));
@@ -182,25 +189,6 @@ public class SchoolLunchApp {
 		System.out.println("New Order added");
 	}
 	
-	public static void displayTotalAmount(ArrayList<MenuItem> menuItemList){
-
-		double amount = Helper.readDouble("Enter total amount > ");
-		
-		for (int i = 0; i < menuItemList.size(); i++) {
-			
-			if(menuItemList.get(i).getPrice() == amount) {
-				String output = String.format("Total amount: $.2f", menuItemList.get(i).getPrice());
-				System.out.println(output);
-			}
-			
-//			double sum = 0.0;
-//	    	sum = menuItemList.get(i).getPrice() + sum;
-//			String output = String.format("Total amount: $.2f", menuItemList.get(i).getPrice());
-//			System.out.println(output);
-		}
-		
-	}
-	
 
 	// =============================================deleteAllOrder==========================================================	
 	private static void deleteAllOrder(ArrayList<Order> orderList) {
@@ -214,62 +202,6 @@ public class SchoolLunchApp {
 		System.out.println(studentid + " is removed!");
 	}
 	
-	
-//	private static void deleteAllOrder(ArrayList<Order> orderList) {
-//		// TODO Auto-generated method stub
-//		Helper.line(80, "-");
-//		System.out.println("DELETE ORDER");
-//		Helper.line(80, "-");
-//
-//		System.out.println("1. Student ID");
-//		System.out.println("2. Order Date");
-//
-//		int num = Helper.readInt("Enter option to search > ");
-//
-//		ArrayList<Order> findList = new ArrayList<Order>();
-//
-//		if (num == 1) {
-//			String studentid = Helper.readString("Enter Student ID > ");
-//			for (Order od : orderList) {
-//				if (od.getStudentId().equalsIgnoreCase(studentid)) {
-//					findList.add(od);
-//				}
-//			}
-//		} else if (num == 2) {
-//			String orderdate = Helper.readString("Enter order date > ");
-//			for (Order od : orderList) {
-//				if (od.getOrderDate().equalsIgnoreCase(orderdate)) {
-//					findList.add(od);
-//				}
-//			}
-//		}
-//
-//		if (findList.size() == 0) {
-//			System.out.println("Nothing is found!");
-//		} else {
-//			System.out.println(String.format("%-15s %-20s %-30s", "STUDENT ID", "ORDER DATE", "ITEMS"));
-//			for (int i = 0; i < findList.size(); i++) {
-//				System.out.println(String.format("%s", findList.get(i).toString()));
-//			}
-//
-//			int choice = Helper.readInt("Enter student id to delete > ");
-//			if (choice <= 0 || choice > findList.size()) {
-//				System.out.println("Invalid input!");
-//			} else {
-//				String studentid = findList.get(choice - 1).getStudentId();
-//				String oderdate = findList.get(choice - 1).getOrderDate();
-//
-//				for (int x = 0; x < orderList.size(); x++) {
-//					if (orderList.get(x).getStudentId().equals(studentid)
-//							&& orderList.get(x).getOrderDate().equals(oderdate))
-//						;
-//					orderList.remove(x);
-//				}
-//
-//				System.out.println("Order deleted");
-//			}
-//		}
-//	}
 
 	// =============================================updateAllOrder==========================================================
 	static void updateAllOrder(ArrayList<Order> orderList, Order order1) {
@@ -283,7 +215,7 @@ public class SchoolLunchApp {
 
 		for (int i = 0; i < orderList.size(); i++) {
 			if (studentid.equalsIgnoreCase(orderList.get(i).getStudentId())) {
-				String orderdate = Helper.readString("Enter order date to update > ");
+				String orderdate = Helper.readString("Enter current order date to update > ");
 
 				if (orderdate.equals(orderList.get(i).getOrderDate())) {
 					String neworderdate = Helper.readString("Enter new order date > ");
@@ -330,14 +262,6 @@ public class SchoolLunchApp {
 		}
 	}
 	
-//	//=================================Display total amount=======================================
-//	public static void displayTotalAmount(ArrayList<Order> orderList) {
-//		
-//		for(int i = 0; i < orderList.size(); i++) {
-//			if()
-//		}
-//		
-//	}
 
 	// submenu for order
 	private static void order() {
