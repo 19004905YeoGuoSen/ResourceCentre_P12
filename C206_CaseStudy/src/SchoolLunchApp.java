@@ -25,9 +25,9 @@ public class SchoolLunchApp {
 					Order order1 = inputOrder();
 					addAllOrder(orderList, order1);
 				} else if (orders == 3) {
-					deleteAllOrder(orderList);
-				} else if (orders == 4) {
 					updateAllOrder(orderList, null);
+				} else if (orders == 4) {
+					deleteAllOrder(orderList);
 				} else if (orders == 5) {
 					searchOrderByStudentID(orderList, null);
 				} else if (orders == 6) {
@@ -204,60 +204,72 @@ public class SchoolLunchApp {
 
 	// =============================================deleteAllOrder==========================================================	
 	private static void deleteAllOrder(ArrayList<Order> orderList) {
-		// TODO Auto-generated method stub
-		Helper.line(80, "-");
-		System.out.println("DELETE ORDER");
-		Helper.line(80, "-");
+		String studentid = Helper.readString("Enter student id");
 
-		System.out.println("1. Student ID");
-		System.out.println("2. Order Date");
-
-		int num = Helper.readInt("Enter option to search > ");
-
-		ArrayList<Order> findList = new ArrayList<Order>();
-
-		if (num == 1) {
-			String studentid = Helper.readString("Enter Student ID > ");
-			for (Order od : orderList) {
-				if (od.getStudentId().equalsIgnoreCase(studentid)) {
-					findList.add(od);
-				}
-			}
-		} else if (num == 2) {
-			String orderdate = Helper.readString("Enter order date > ");
-			for (Order od : orderList) {
-				if (od.getOrderDate().equalsIgnoreCase(orderdate)) {
-					findList.add(od);
-				}
-			}
+		for (int i = 0; i < orderList.size(); i++) {
+			if (orderList.get(i).getStudentId().equals(studentid))
+				orderList.remove(i);
 		}
 
-		if (findList.size() == 0) {
-			System.out.println("Nothing is found!");
-		} else {
-			System.out.println(String.format("%-15s %-20s %-30s", "STUDENT ID", "ORDER DATE", "ITEMS"));
-			for (int i = 0; i < findList.size(); i++) {
-				System.out.println(String.format("%s", findList.get(i).toString()));
-			}
-
-			int choice = Helper.readInt("Enter student id to delete > ");
-			if (choice <= 0 || choice > findList.size()) {
-				System.out.println("Invalid input!");
-			} else {
-				String studentid = findList.get(choice - 1).getStudentId();
-				String oderdate = findList.get(choice - 1).getOrderDate();
-
-				for (int x = 0; x < orderList.size(); x++) {
-					if (orderList.get(x).getStudentId().equals(studentid)
-							&& orderList.get(x).getOrderDate().equals(oderdate))
-						;
-					orderList.remove(x);
-				}
-
-				System.out.println("Order deleted");
-			}
-		}
+		System.out.println(studentid + " is removed!");
 	}
+	
+	
+//	private static void deleteAllOrder(ArrayList<Order> orderList) {
+//		// TODO Auto-generated method stub
+//		Helper.line(80, "-");
+//		System.out.println("DELETE ORDER");
+//		Helper.line(80, "-");
+//
+//		System.out.println("1. Student ID");
+//		System.out.println("2. Order Date");
+//
+//		int num = Helper.readInt("Enter option to search > ");
+//
+//		ArrayList<Order> findList = new ArrayList<Order>();
+//
+//		if (num == 1) {
+//			String studentid = Helper.readString("Enter Student ID > ");
+//			for (Order od : orderList) {
+//				if (od.getStudentId().equalsIgnoreCase(studentid)) {
+//					findList.add(od);
+//				}
+//			}
+//		} else if (num == 2) {
+//			String orderdate = Helper.readString("Enter order date > ");
+//			for (Order od : orderList) {
+//				if (od.getOrderDate().equalsIgnoreCase(orderdate)) {
+//					findList.add(od);
+//				}
+//			}
+//		}
+//
+//		if (findList.size() == 0) {
+//			System.out.println("Nothing is found!");
+//		} else {
+//			System.out.println(String.format("%-15s %-20s %-30s", "STUDENT ID", "ORDER DATE", "ITEMS"));
+//			for (int i = 0; i < findList.size(); i++) {
+//				System.out.println(String.format("%s", findList.get(i).toString()));
+//			}
+//
+//			int choice = Helper.readInt("Enter student id to delete > ");
+//			if (choice <= 0 || choice > findList.size()) {
+//				System.out.println("Invalid input!");
+//			} else {
+//				String studentid = findList.get(choice - 1).getStudentId();
+//				String oderdate = findList.get(choice - 1).getOrderDate();
+//
+//				for (int x = 0; x < orderList.size(); x++) {
+//					if (orderList.get(x).getStudentId().equals(studentid)
+//							&& orderList.get(x).getOrderDate().equals(oderdate))
+//						;
+//					orderList.remove(x);
+//				}
+//
+//				System.out.println("Order deleted");
+//			}
+//		}
+//	}
 
 	// =============================================updateAllOrder==========================================================
 	static void updateAllOrder(ArrayList<Order> orderList, Order order1) {
@@ -332,8 +344,8 @@ public class SchoolLunchApp {
 		// TODO Auto-generated method stub
 		System.out.println("1. View orders");
 		System.out.println("2. Add orders");
-		System.out.println("3. Delete orders");
-		System.out.println("4. Update orders");
+		System.out.println("3. Update orders");
+		System.out.println("4. Delete orders");
 		System.out.println("5. Search orders by student ID"); 
 //		System.out.println("6. Display total amount"); 
 	}
