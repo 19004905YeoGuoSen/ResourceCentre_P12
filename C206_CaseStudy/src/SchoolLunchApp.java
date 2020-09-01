@@ -166,11 +166,12 @@ public class SchoolLunchApp {
 	    		} 
 	    	double price = Helper.readDouble("Enter Price >");
 	    	
-		    for (int x = 0; x < items.size(); x++) {
-		    	double amount = Helper.readDouble("Enter total amount > $");
-		    	String output = String.format("Total amount: $%.2f", price + price);
+	    	
+//		    for (int x = 0; x < items.size(); x++) {
+//		    	double amount = Helper.readDouble("Enter total amount > $");
+		    	String output = String.format("Total amount: $%.2f", price);
 				System.out.println(output);
-		    }
+//		    }
 	    	
 //	    	System.out.println(String.format("%-20s %-20s %-30s %-20s", "Category:" + category, "Name:" + name, "Healthy Choice:" + healthyChoice, "Price:" + price));
 //	    	items.add(new MenuItem(String.format("%-20s %-20s %-30s %-20s", "Category: " , "Name:", "HealthyChoice:" , "Price: $"), name, healthyChoice, price)); 
@@ -204,7 +205,7 @@ public class SchoolLunchApp {
 	
 
 	// =============================================updateAllOrder==========================================================
-	static void updateAllOrder(ArrayList<Order> orderList, Order order1) {
+	static void updateAllOrder(ArrayList<Order> orderList, Order order2) {
 		Helper.line(80, "-");
 		System.out.println("UPDATE ORDERS");
 		Helper.line(80, "-");
@@ -255,7 +256,7 @@ public class SchoolLunchApp {
 				isIdFound = true;
 			}
 		}
-		if (isIdFound = false) {
+		if (isIdFound = true) {
 			System.out.println(output);
 		} else {
 			System.out.println("Student ID not exists");
