@@ -98,12 +98,12 @@ public class C206_CaseStudyTest {
 		//The order stored in the list is the same as the order being updated
 		SchoolLunchApp.updateAllOrder(orderList, order1);
 		assertEquals("Check if the order arrayList is 1?", 1, orderList.size());
-		assertSame("Check that the order is updated", "20/08/2020", orderList.get(0));
+		assertSame("Check that the order date is updated", "20/08/2020", orderList.get(0));
 		
 		//After updating another order. the arraylist size is 2 and the second order in the list is the order updated 
 		SchoolLunchApp.updateAllOrder(orderList, order2);
 		assertEquals("Check if the order arrayList size is 2", 2, orderList.size());
-		assertSame("Check that the order is updated", "20/08/2020", orderList.get(1));
+		assertSame("Check that the order date is updated", "20/08/2020", orderList.get(1));
 	}
 	
 	public void searchbyStudentIDTest() {
@@ -113,12 +113,12 @@ public class C206_CaseStudyTest {
 		//After searching 1 order, the order stored in the is the same as order being searched 
 		SchoolLunchApp.searchOrderByStudentID(orderList, order1);
 		assertEquals("Check if the order arrayList size is 1", 1, orderList.size());
-		assertSame("Check that the order is searched", "19002451", orderList.get(0));
+		assertSame("Check that the student id is searched", "19002451", orderList.get(0));
 		
 		//After searching another order, the arraylist size is 2 and the second order in the list is the order searched 
 		SchoolLunchApp.searchOrderByStudentID(orderList, order2);
 		assertEquals("Check if the order arrayList size is 2", 2, orderList.size());
-		assertSame("Check that the order is searched", "19036051", orderList.get(1));
+		assertSame("Check that the student id is searched", "19036051", orderList.get(1));
 	}
 	
 	//===============================================MenuItem=============================================================
