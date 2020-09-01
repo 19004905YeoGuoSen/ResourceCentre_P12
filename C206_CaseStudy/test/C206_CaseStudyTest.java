@@ -40,10 +40,11 @@ public class C206_CaseStudyTest {
 	
 	//===============================================Order=============================================================
 	public void addAllOrderTest() {
-		//Order list is not null
+		//Item  list is not null
 		assertNotNull("Check if there is valid order arrylist to add to", orderList);
 		
-		//After adding 1 order, the order stored in the list is the same as the order being added
+		//Given an empty list, After adding 1 order, the size of the list is 1
+		//The item just added is the same as the first item of the list 
 		SchoolLunchApp.addAllOrder(orderList, order1);
 		assertEquals("Check if the Order arrayList size is 1?", 1, orderList.size());
 		assertSame("Check that the order is added", order1, orderList.get(0));
@@ -70,25 +71,8 @@ public class C206_CaseStudyTest {
 		
 		//Test if the expected output string same as the list of order retrieved from the SourceCentre
 		allOrder= SchoolLunchApp.retrieveAllOrder(orderList);
-		
 		testOutput = String.format("%-15s %-20s %-30s\n", "19002451", "11/06/2020", new ArrayList<MenuItem>());
-		
 		assertEquals("Check that ViewAllOrderList", testOutput, allOrder);
-	}
-	
-	public void updateAllOrderTest() {
-		//Order list is not null
-		assertNotNull("Check of there is valid order arraylist to add to", orderList);
-		
-		//After updating 1 order, the order stored in the list is the same as the order being updated
-		SchoolLunchApp.updateAllOrder(orderList, order1);
-		assertEquals("Check if the order arrayList is 1?", 1, orderList.size());
-		assertSame("Check that the order is updated", order1, orderList.get(0));
-		
-		//After updating another order. the arraylist size is 2 and the second order in the list is the order updated 
-		SchoolLunchApp.updateAllOrder(orderList, order2);
-		assertEquals("Check if the order arrayList size is 2", 2, orderList.size());
-		assertSame("Check that the order is updated", order2, orderList.get(1));
 	}
 	
 	public void deleteOrderTest() {
@@ -105,6 +89,23 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that the size of orderList is 0", 0, orderList.size());
 	}
 	
+	public void updateAllOrderTest() {
+		//Order list is not null
+		assertNotNull("Check of there is valid order arraylist to update to", orderList);
+		SchoolLunchApp.addAllOrder(orderList, order1);
+		
+		//After updating 1 order, the size of the list must be 1 
+		//The order stored in the list is the same as the order being updated
+		SchoolLunchApp.updateAllOrder(orderList, order1);
+		assertEquals("Check if the order arrayList is 1?", 1, orderList.size());
+		assertSame("Check that the order is updated", "20/08/2020", orderList.get(0));
+		
+		//After updating another order. the arraylist size is 2 and the second order in the list is the order updated 
+		SchoolLunchApp.updateAllOrder(orderList, order2);
+		assertEquals("Check if the order arrayList size is 2", 2, orderList.size());
+		assertSame("Check that the order is updated", "20/08/2020", orderList.get(1));
+	}
+	
 	public void searchbyStudentIDTest() {
 		//Order list is not null
 		assertNotNull("Check if there is valid order arraylist to search", orderList);
@@ -112,12 +113,12 @@ public class C206_CaseStudyTest {
 		//After searching 1 order, the order stored in the is the same as order being searched 
 		SchoolLunchApp.searchOrderByStudentID(orderList, order1);
 		assertEquals("Check if the order arrayList size is 1", 1, orderList.size());
-		assertSame("Check that the order is searched", order1, orderList.get(0));
+		assertSame("Check that the order is searched", "19002451", orderList.get(0));
 		
 		//After searching another order, the arraylist size is 2 and the second order in the list is the order searched 
 		SchoolLunchApp.searchOrderByStudentID(orderList, order2);
 		assertEquals("Check if the order arrayList size is 2", 2, orderList.size());
-		assertSame("Check that the order is searched", order2, orderList.get(1));
+		assertSame("Check that the order is searched", "19036051", orderList.get(1));
 	}
 	
 	//===============================================MenuItem=============================================================
