@@ -158,7 +158,7 @@ public class SchoolLunchApp {
 	    		char healthyChoiceReader = Helper.readChar("Is the Menu Item a healthy choice (y/n)> ");
 	    		if (Character.toLowerCase(healthyChoiceReader) == 'y'|| Character.toLowerCase(healthyChoiceReader) == 'n') {
 	    			acceptedAns = true;
-	    			if (Character.toLowerCase(healthyChoiceReader) == 'y') {
+	    			if (Character.toLowerCase(healthyChoiceReader) == 'y' || Character.toLowerCase(healthyChoiceReader) == 'n') {
 	    				healthyChoice = true;
 	    			} else {
 	    				System.out.println("Invalid input!");
@@ -207,7 +207,7 @@ public class SchoolLunchApp {
 	// =============================================updateAllOrder==========================================================
 	static void updateAllOrder(ArrayList<Order> orderList, Order order2) {
 		Helper.line(80, "-");
-		System.out.println("UPDATE ORDERS");
+		System.out.println("UPDATE ORDERS BY ORDER DATE");
 		Helper.line(80, "-");
 
 		String studentid = Helper.readString("Enter Student ID > ");
@@ -269,7 +269,7 @@ public class SchoolLunchApp {
 		// TODO Auto-generated method stub
 		System.out.println("1. View orders");
 		System.out.println("2. Add orders");
-		System.out.println("3. Update orders");
+		System.out.println("3. Update orders date");
 		System.out.println("4. Delete orders");
 		System.out.println("5. Search orders by student ID"); 
 //		System.out.println("6. Display total amount"); 
