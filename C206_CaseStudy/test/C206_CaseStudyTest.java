@@ -90,15 +90,15 @@ public class C206_CaseStudyTest {
 	}
 	
 	public void updateAllOrderTest() {
-		//Order list is not null
-		assertNotNull("Check of there is valid order arraylist to update to", orderList);
+		//Order list is null
+		assertNull("Check of there is valid order arraylist to update to", orderList);
 		SchoolLunchApp.addAllOrder(orderList, order1);
 		
 		//After updating 1 order, the size of the list must be 1 
 		//The order stored in the list is the same as the order being updated
 		SchoolLunchApp.updateAllOrder(orderList, order1);
 		assertEquals("Check if the order arrayList is 1?", 1, orderList.size());
-		assertSame("Check that the order date is updated", "20/08/2020", orderList.get(0));
+		assertSame("Check that the order date is updated", "11/06/2020", orderList.get(0));
 		
 		//After updating another order. the arraylist size is 2 and the second order in the list is the order updated 
 		SchoolLunchApp.updateAllOrder(orderList, order2);
@@ -107,8 +107,8 @@ public class C206_CaseStudyTest {
 	}
 	
 	public void searchbyStudentIDTest() {
-		//Order list is not null
-		assertNotNull("Check if there is valid order arraylist to search", orderList);
+		//Order list is null
+		assertNull("Check if there is valid order arraylist to search", orderList);
 		
 		//After searching 1 order, the order stored in the is the same as order being searched 
 		SchoolLunchApp.searchOrderByStudentID(orderList, order1);
